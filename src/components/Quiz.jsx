@@ -573,10 +573,10 @@ export default function Quiz() {
                 {/* Sì, ho le misure */}
                 <button
                   onClick={() => setAnswers({ ...answers, hasMisure: 'si' })}
-                  className={`py-5 px-5 rounded-xl border-2 text-left transition-all duration-300 hover:shadow-md ${
+                  className={`py-5 px-5 rounded-xl text-left transition-all duration-300 hover:shadow-md ${
                     answers.hasMisure === 'si'
-                      ? 'border-emerald-300 bg-emerald-50/60 shadow-md shadow-emerald-200/5'
-                      : 'border-emerald-200 bg-emerald-50/60 hover:border-emerald-300'
+                      ? 'border-2 border-emerald-300 bg-emerald-50/60 shadow-md shadow-emerald-200/5'
+                      : 'border-0 bg-emerald-50/60'
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-2">
@@ -591,10 +591,10 @@ export default function Quiz() {
                 {/* No, stima generica */}
                 <button
                   onClick={() => setAnswers({ ...answers, hasMisure: 'no' })}
-                  className={`py-5 px-5 rounded-xl border-2 text-left transition-all duration-300 hover:shadow-md ${
+                  className={`py-5 px-5 rounded-xl text-left transition-all duration-300 hover:shadow-md ${
                     answers.hasMisure === 'no'
-                      ? 'border-amber-300 bg-amber-50/60 shadow-md shadow-amber-200/5'
-                      : 'border-amber-200 bg-amber-50/60 hover:border-amber-300'
+                      ? 'border-2 border-amber-300 bg-amber-50/60 shadow-md shadow-amber-200/5'
+                      : 'border-0 bg-amber-50/60'
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-2">
@@ -730,10 +730,10 @@ export default function Quiz() {
                     <button
                       key={q}
                       onClick={() => setAnswers({ ...answers, quantitaGenerica: q })}
-                      className={`py-6 px-4 rounded-xl border-2 text-center transition-all duration-300 ${
+                      className={`py-6 px-4 rounded-xl text-center transition-all duration-300 ${
                         answers.quantitaGenerica === q
                           ? `border-2 ${color.border} ${color.bg} shadow-md ${color.shadow}`
-                          : `${color.borderLight} ${color.bg} ${color.hoverBorder} hover:shadow-md`
+                          : `border-0 ${color.bg} hover:shadow-md`
                       }`}
                     >
                       <div className={`text-2xl font-bold mb-1 ${answers.quantitaGenerica === q ? color.text : 'text-gray-900'}`}>{q}</div>
@@ -761,10 +761,10 @@ export default function Quiz() {
                     <button
                       key={opt.id}
                       onClick={() => setAnswers({ ...answers, installazione: opt.id })}
-                      className={`relative py-6 px-5 rounded-xl border-2 text-left transition-all duration-300 hover:shadow-md ${
+                      className={`relative py-6 px-5 rounded-xl text-left transition-all duration-300 hover:shadow-md ${
                         selected
                           ? `border-2 ${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
-                          : `${opt.color.borderLight} ${opt.color.bg} ${opt.color.hoverBorder}`
+                          : `border-0 ${opt.color.bg}`
                       }`}
                     >
                       {/* Badge per Fornitura + Posa */}
@@ -815,10 +815,10 @@ export default function Quiz() {
                     <button
                       key={opt.id}
                       onClick={() => setAnswers({ ...answers, tempistiche: opt.id })}
-                      className={`py-8 px-6 rounded-xl border-2 text-center transition-all duration-300 hover:shadow-md ${
+                      className={`py-8 px-6 rounded-xl text-center transition-all duration-300 hover:shadow-md ${
                         selected
                           ? `border-2 ${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
-                          : `${opt.color.borderLight} ${opt.color.bg} ${opt.color.hoverBorder}`
+                          : `border-0 ${opt.color.bg}`
                       }`}
                     >
                       <opt.Icon className={`w-6 h-6 mx-auto mb-3 ${opt.color.icon}`} />
