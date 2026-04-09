@@ -35,17 +35,17 @@ const FASCE = [
     ],
     moltiplicatore: 1.0,
     color: {
-      border: 'border-sky-300',
-      bg: 'bg-sky-50',
-      shadow: 'shadow-sky-300/5',
+      border: 'border-sky-200',
+      bg: 'bg-sky-50/60',
+      shadow: 'shadow-sky-200/5',
       check: 'bg-sky-500',
-      icon: 'text-sky-400',
-      iconBg: 'bg-sky-100',
-      text: 'text-sky-600',
-      badge: 'bg-sky-100 text-sky-600',
+      icon: 'text-sky-500',
+      iconBg: 'bg-sky-50',
+      text: 'text-sky-700',
+      badge: 'bg-sky-100/70 text-sky-700',
       gradient: 'from-sky-500 to-sky-600',
       light: 'text-sky-500',
-      ring: 'ring-sky-300/30',
+      ring: 'ring-sky-200/20',
       borderLight: 'border-sky-150',
       hoverBorder: 'hover:border-sky-300',
     },
@@ -71,17 +71,17 @@ const FASCE = [
     moltiplicatore: 1.2,
     popolare: true,
     color: {
-      border: 'border-emerald-300',
-      bg: 'bg-emerald-50',
-      shadow: 'shadow-emerald-300/5',
+      border: 'border-emerald-200',
+      bg: 'bg-emerald-50/60',
+      shadow: 'shadow-emerald-200/5',
       check: 'bg-emerald-500',
-      icon: 'text-emerald-400',
-      iconBg: 'bg-emerald-100',
-      text: 'text-emerald-600',
-      badge: 'bg-emerald-100 text-emerald-600',
+      icon: 'text-emerald-500',
+      iconBg: 'bg-emerald-50',
+      text: 'text-emerald-700',
+      badge: 'bg-emerald-100/70 text-emerald-700',
       gradient: 'from-emerald-500 to-emerald-600',
       light: 'text-emerald-500',
-      ring: 'ring-emerald-300/30',
+      ring: 'ring-emerald-200/20',
       borderLight: 'border-emerald-150',
       hoverBorder: 'hover:border-emerald-300',
     },
@@ -106,17 +106,17 @@ const FASCE = [
     ],
     moltiplicatore: 1.55,
     color: {
-      border: 'border-amber-300',
-      bg: 'bg-amber-50',
-      shadow: 'shadow-amber-300/5',
+      border: 'border-amber-200',
+      bg: 'bg-amber-50/60',
+      shadow: 'shadow-amber-200/5',
       check: 'bg-amber-500',
-      icon: 'text-amber-400',
-      iconBg: 'bg-amber-100',
-      text: 'text-amber-600',
-      badge: 'bg-amber-100 text-amber-600',
+      icon: 'text-amber-500',
+      iconBg: 'bg-amber-50',
+      text: 'text-amber-700',
+      badge: 'bg-amber-100/70 text-amber-700',
       gradient: 'from-amber-500 to-amber-600',
       light: 'text-amber-500',
-      ring: 'ring-amber-300/30',
+      ring: 'ring-amber-200/20',
       borderLight: 'border-amber-150',
       hoverBorder: 'hover:border-amber-300',
     },
@@ -176,9 +176,9 @@ const MATERIALI = [
 ]
 
 const TEMPISTICHE_OPTIONS = [
-  { id: 'urgente', label: 'Il prima possibile', sub: 'Entro 2-3 settimane', Icon: Zap, color: { border: 'border-orange-400', borderLight: 'border-orange-200', bg: 'bg-orange-50', icon: 'text-orange-500', text: 'text-orange-700', shadow: 'shadow-orange-400/10', hoverBorder: 'hover:border-orange-400' } },
-  { id: '1-3mesi', label: 'Entro 1-3 mesi', sub: 'Tempistica standard', Icon: CalendarClock, color: { border: 'border-sky-400', borderLight: 'border-sky-200', bg: 'bg-sky-50', icon: 'text-sky-500', text: 'text-sky-700', shadow: 'shadow-sky-400/10', hoverBorder: 'hover:border-sky-400' } },
-  { id: 'nessuna-fretta', label: 'Nessuna fretta', sub: 'Sto solo valutando', Icon: HelpCircle, color: { border: 'border-violet-400', borderLight: 'border-violet-200', bg: 'bg-violet-50', icon: 'text-violet-500', text: 'text-violet-700', shadow: 'shadow-violet-400/10', hoverBorder: 'hover:border-violet-400' } },
+  { id: 'urgente', label: 'Il prima possibile', sub: 'Entro 2-3 settimane', Icon: Zap, color: { border: 'border-orange-200', borderLight: 'border-orange-150', bg: 'bg-orange-50/60', icon: 'text-orange-500', text: 'text-orange-700', shadow: 'shadow-orange-200/5', hoverBorder: 'hover:border-orange-300' } },
+  { id: '1-3mesi', label: 'Entro 1-3 mesi', sub: 'Tempistica standard', Icon: CalendarClock, color: { border: 'border-sky-200', borderLight: 'border-sky-150', bg: 'bg-sky-50/60', icon: 'text-sky-500', text: 'text-sky-700', shadow: 'shadow-sky-200/5', hoverBorder: 'hover:border-sky-300' } },
+  { id: 'nessuna-fretta', label: 'Nessuna fretta', sub: 'Sto solo valutando', Icon: HelpCircle, color: { border: 'border-violet-200', borderLight: 'border-violet-150', bg: 'bg-violet-50/60', icon: 'text-violet-500', text: 'text-violet-700', shadow: 'shadow-violet-200/5', hoverBorder: 'hover:border-violet-300' } },
 ]
 
 export default function Quiz() {
@@ -506,12 +506,12 @@ export default function Quiz() {
                         }}
                         className={`w-full text-left rounded-2xl overflow-hidden transition-all duration-300 p-5 sm:p-6 ${
                           selected
-                            ? `border-2 ${f.color.border} ${f.color.bg} shadow-lg ${f.color.shadow} ring-2 ${f.color.ring}`
-                            : `border-0 ${f.color.bg} ${f.color.hoverBorder} hover:shadow-md`
+                            ? `border-2 ${f.color.border} ${f.color.bg} shadow-md ${f.color.shadow} ring-2 ${f.color.ring}`
+                            : `border-0 ${f.color.bg} hover:shadow-md`
                         }`}
                       >
                         <div className="flex flex-col items-start gap-3">
-                          {/* Icon — small, top left */}
+                          {/* Icon — small, top left, ALWAYS colored */}
                           <div className="flex items-center justify-between w-full">
                             <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${f.color.iconBg}`}>
                               <IconComp className={`w-4 h-4 ${f.color.icon}`} />
@@ -575,13 +575,13 @@ export default function Quiz() {
                   onClick={() => setAnswers({ ...answers, hasMisure: 'si' })}
                   className={`py-5 px-5 rounded-xl border-2 text-left transition-all duration-300 hover:shadow-md ${
                     answers.hasMisure === 'si'
-                      ? 'border-emerald-400 bg-emerald-50 shadow-md shadow-emerald-400/10'
-                      : 'border-emerald-200 bg-emerald-50/40 hover:border-emerald-300'
+                      ? 'border-emerald-300 bg-emerald-50/60 shadow-md shadow-emerald-200/5'
+                      : 'border-emerald-200 bg-emerald-50/60 hover:border-emerald-300'
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${answers.hasMisure === 'si' ? 'bg-emerald-100' : 'bg-gray-100'}`}>
-                      <Ruler className={`w-4 h-4 ${answers.hasMisure === 'si' ? 'text-emerald-600' : 'text-gray-400'}`} />
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-emerald-50`}>
+                      <Ruler className={`w-4 h-4 text-emerald-500`} />
                     </div>
                     <span className="text-sm font-bold text-gray-900">Sì, ho le misure</span>
                   </div>
@@ -593,13 +593,13 @@ export default function Quiz() {
                   onClick={() => setAnswers({ ...answers, hasMisure: 'no' })}
                   className={`py-5 px-5 rounded-xl border-2 text-left transition-all duration-300 hover:shadow-md ${
                     answers.hasMisure === 'no'
-                      ? 'border-amber-400 bg-amber-50 shadow-md shadow-amber-400/10'
-                      : 'border-amber-200 bg-amber-50/40 hover:border-amber-300'
+                      ? 'border-amber-300 bg-amber-50/60 shadow-md shadow-amber-200/5'
+                      : 'border-amber-200 bg-amber-50/60 hover:border-amber-300'
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-2">
-                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${answers.hasMisure === 'no' ? 'bg-amber-100' : 'bg-gray-100'}`}>
-                      <Calculator className={`w-4 h-4 ${answers.hasMisure === 'no' ? 'text-amber-600' : 'text-gray-400'}`} />
+                    <div className={`w-8 h-8 rounded-lg flex items-center justify-center bg-amber-50`}>
+                      <Calculator className={`w-4 h-4 text-amber-500`} />
                     </div>
                     <span className="text-sm font-bold text-gray-900">No, stima approssimativa</span>
                   </div>
@@ -722,17 +722,17 @@ export default function Quiz() {
               {answers.hasMisure === 'no' && (
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto">
                   {[
-                    { q: '1–3', color: { border: 'border-sky-400', borderLight: 'border-sky-200', bg: 'bg-sky-50', text: 'text-sky-700', shadow: 'shadow-sky-400/10', hoverBorder: 'hover:border-sky-400' } },
-                    { q: '4–6', color: { border: 'border-violet-400', borderLight: 'border-violet-200', bg: 'bg-violet-50', text: 'text-violet-700', shadow: 'shadow-violet-400/10', hoverBorder: 'hover:border-violet-400' } },
-                    { q: '7–10', color: { border: 'border-amber-400', borderLight: 'border-amber-200', bg: 'bg-amber-50', text: 'text-amber-700', shadow: 'shadow-amber-400/10', hoverBorder: 'hover:border-amber-400' } },
-                    { q: '10+', color: { border: 'border-emerald-400', borderLight: 'border-emerald-200', bg: 'bg-emerald-50', text: 'text-emerald-700', shadow: 'shadow-emerald-400/10', hoverBorder: 'hover:border-emerald-400' } },
+                    { q: '1–3', color: { border: 'border-sky-200', borderLight: 'border-sky-150', bg: 'bg-sky-50/60', text: 'text-sky-700', shadow: 'shadow-sky-200/5', hoverBorder: 'hover:border-sky-300' } },
+                    { q: '4–6', color: { border: 'border-violet-200', borderLight: 'border-violet-150', bg: 'bg-violet-50/60', text: 'text-violet-700', shadow: 'shadow-violet-200/5', hoverBorder: 'hover:border-violet-300' } },
+                    { q: '7–10', color: { border: 'border-amber-200', borderLight: 'border-amber-150', bg: 'bg-amber-50/60', text: 'text-amber-700', shadow: 'shadow-amber-200/5', hoverBorder: 'hover:border-amber-300' } },
+                    { q: '10+', color: { border: 'border-emerald-200', borderLight: 'border-emerald-150', bg: 'bg-emerald-50/60', text: 'text-emerald-700', shadow: 'shadow-emerald-200/5', hoverBorder: 'hover:border-emerald-300' } },
                   ].map(({ q, color }) => (
                     <button
                       key={q}
                       onClick={() => setAnswers({ ...answers, quantitaGenerica: q })}
                       className={`py-6 px-4 rounded-xl border-2 text-center transition-all duration-300 ${
                         answers.quantitaGenerica === q
-                          ? `${color.border} ${color.bg} shadow-md ${color.shadow}`
+                          ? `border-2 ${color.border} ${color.bg} shadow-md ${color.shadow}`
                           : `${color.borderLight} ${color.bg} ${color.hoverBorder} hover:shadow-md`
                       }`}
                     >
@@ -753,8 +753,8 @@ export default function Quiz() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
                 {[
-                  { id: 'fornitura', label: 'Solo fornitura', sub: 'Hai già un tuo installatore di fiducia. Ti forniamo solo i serramenti.', Icon: Package, color: { border: 'border-sky-400', borderLight: 'border-sky-200', bg: 'bg-sky-50', icon: 'text-sky-500', iconBg: 'bg-sky-100', shadow: 'shadow-sky-400/10', hoverBorder: 'hover:border-sky-400' } },
-                  { id: 'fornitura-posa', label: 'Fornitura + Posa', sub: 'Ci occupiamo noi di tutto: serramenti + installazione professionale.', Icon: Wrench, color: { border: 'border-emerald-400', borderLight: 'border-emerald-200', bg: 'bg-emerald-50', icon: 'text-emerald-500', iconBg: 'bg-emerald-100', shadow: 'shadow-emerald-400/10', hoverBorder: 'hover:border-emerald-400' }, badge: '💰 Prezzo Conveniente', included: ['Sopralluogo gratuito', 'Rilevamento misure a domicilio', 'Posa professionale certificata', 'Smaltimento vecchi infissi', 'Miglior prezzo grazie alle squadre interne'] },
+                  { id: 'fornitura', label: 'Solo fornitura', sub: 'Hai già un tuo installatore di fiducia. Ti forniamo solo i serramenti.', Icon: Package, color: { border: 'border-sky-200', borderLight: 'border-sky-150', bg: 'bg-sky-50/60', icon: 'text-sky-500', iconBg: 'bg-sky-50', shadow: 'shadow-sky-200/5', hoverBorder: 'hover:border-sky-300' } },
+                  { id: 'fornitura-posa', label: 'Fornitura + Posa', sub: 'Ci occupiamo noi di tutto: serramenti + installazione professionale.', Icon: Wrench, color: { border: 'border-emerald-200', borderLight: 'border-emerald-150', bg: 'bg-emerald-50/60', icon: 'text-emerald-500', iconBg: 'bg-emerald-50', shadow: 'shadow-emerald-200/5', hoverBorder: 'hover:border-emerald-300' }, badge: '💰 Prezzo Conveniente', included: ['Sopralluogo gratuito', 'Rilevamento misure a domicilio', 'Posa professionale certificata', 'Smaltimento vecchi infissi', 'Miglior prezzo grazie alle squadre interne'] },
                 ].map((opt) => {
                   const selected = answers.installazione === opt.id
                   return (
@@ -763,7 +763,7 @@ export default function Quiz() {
                       onClick={() => setAnswers({ ...answers, installazione: opt.id })}
                       className={`relative py-6 px-5 rounded-xl border-2 text-left transition-all duration-300 hover:shadow-md ${
                         selected
-                          ? `${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
+                          ? `border-2 ${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
                           : `${opt.color.borderLight} ${opt.color.bg} ${opt.color.hoverBorder}`
                       }`}
                     >
@@ -775,8 +775,8 @@ export default function Quiz() {
                       )}
 
                       <div className="flex items-start gap-3 mb-3">
-                        <div className={`w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center ${selected ? opt.color.iconBg : 'bg-gray-100'}`}>
-                          <opt.Icon className={`w-5 h-5 ${selected ? opt.color.icon : 'text-gray-400'}`} />
+                        <div className={`w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center ${opt.color.iconBg}`}>
+                          <opt.Icon className={`w-5 h-5 ${opt.color.icon}`} />
                         </div>
                         <div className="flex-1">
                           <div className="text-base font-bold text-gray-900">{opt.label}</div>
@@ -817,11 +817,11 @@ export default function Quiz() {
                       onClick={() => setAnswers({ ...answers, tempistiche: opt.id })}
                       className={`py-8 px-6 rounded-xl border-2 text-center transition-all duration-300 hover:shadow-md ${
                         selected
-                          ? `${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
+                          ? `border-2 ${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
                           : `${opt.color.borderLight} ${opt.color.bg} ${opt.color.hoverBorder}`
                       }`}
                     >
-                      <opt.Icon className={`w-6 h-6 mx-auto mb-3 ${selected ? opt.color.icon : 'text-gray-300'}`} />
+                      <opt.Icon className={`w-6 h-6 mx-auto mb-3 ${opt.color.icon}`} />
                       <div className={`text-base font-bold mb-1 ${selected ? opt.color.text : 'text-gray-900'}`}>{opt.label}</div>
                       <div className="text-xs text-gray-400">{opt.sub}</div>
                     </button>
