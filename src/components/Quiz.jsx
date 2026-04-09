@@ -107,7 +107,7 @@ const FASCE = [
     moltiplicatore: 1.55,
     color: {
       border: 'border-amber-200',
-      bg: 'bg-amber-50/60',
+      bg: 'bg-amber-100/60',
       shadow: 'shadow-amber-200/5',
       check: 'bg-amber-500',
       icon: 'text-amber-500',
@@ -593,8 +593,8 @@ export default function Quiz() {
                   onClick={() => setAnswers({ ...answers, hasMisure: 'no' })}
                   className={`py-5 px-5 rounded-xl text-left transition-all duration-300 hover:shadow-md ${
                     answers.hasMisure === 'no'
-                      ? 'border-2 border-amber-300 bg-amber-50/60 shadow-md shadow-amber-200/5'
-                      : 'border-0 bg-amber-50/60'
+                      ? 'border-2 border-amber-300 bg-amber-100/60 shadow-md shadow-amber-200/5'
+                      : 'border-0 bg-amber-100/60'
                   }`}
                 >
                   <div className="flex items-center gap-3 mb-2">
@@ -724,7 +724,7 @@ export default function Quiz() {
                   {[
                     { q: '1–3', color: { border: 'border-sky-200', borderLight: 'border-sky-150', bg: 'bg-sky-50/60', text: 'text-sky-700', shadow: 'shadow-sky-200/5', hoverBorder: 'hover:border-sky-300' } },
                     { q: '4–6', color: { border: 'border-violet-200', borderLight: 'border-violet-150', bg: 'bg-violet-50/60', text: 'text-violet-700', shadow: 'shadow-violet-200/5', hoverBorder: 'hover:border-violet-300' } },
-                    { q: '7–10', color: { border: 'border-amber-200', borderLight: 'border-amber-150', bg: 'bg-amber-50/60', text: 'text-amber-700', shadow: 'shadow-amber-200/5', hoverBorder: 'hover:border-amber-300' } },
+                    { q: '7–10', color: { border: 'border-amber-200', borderLight: 'border-amber-150', bg: 'bg-amber-100/60', text: 'text-amber-700', shadow: 'shadow-amber-200/5', hoverBorder: 'hover:border-amber-300' } },
                     { q: '10+', color: { border: 'border-emerald-200', borderLight: 'border-emerald-150', bg: 'bg-emerald-50/60', text: 'text-emerald-700', shadow: 'shadow-emerald-200/5', hoverBorder: 'hover:border-emerald-300' } },
                   ].map(({ q, color }) => (
                     <button
