@@ -754,24 +754,47 @@ export default function Quiz() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto">
                 {[
                   { id: 'fornitura', label: 'Solo fornitura', sub: 'Hai già un tuo installatore di fiducia. Ti forniamo solo i serramenti.', Icon: Package, color: { border: 'border-sky-400', borderLight: 'border-sky-200', bg: 'bg-sky-50', icon: 'text-sky-500', iconBg: 'bg-sky-100', shadow: 'shadow-sky-400/10', hoverBorder: 'hover:border-sky-400' } },
-                  { id: 'fornitura-posa', label: 'Fornitura + Posa', sub: 'Ci occupiamo noi di tutto: serramenti + installazione professionale.', Icon: Wrench, color: { border: 'border-emerald-400', borderLight: 'border-emerald-200', bg: 'bg-emerald-50', icon: 'text-emerald-500', iconBg: 'bg-emerald-100', shadow: 'shadow-emerald-400/10', hoverBorder: 'hover:border-emerald-400' } },
+                  { id: 'fornitura-posa', label: 'Fornitura + Posa', sub: 'Ci occupiamo noi di tutto: serramenti + installazione professionale.', Icon: Wrench, color: { border: 'border-emerald-400', borderLight: 'border-emerald-200', bg: 'bg-emerald-50', icon: 'text-emerald-500', iconBg: 'bg-emerald-100', shadow: 'shadow-emerald-400/10', hoverBorder: 'hover:border-emerald-400' }, badge: '💰 Prezzo Conveniente', included: ['Sopralluogo gratuito', 'Rilevamento misure a domicilio', 'Posa professionale certificata', 'Smaltimento vecchi infissi', 'Miglior prezzo grazie alle squadre interne'] },
                 ].map((opt) => {
                   const selected = answers.installazione === opt.id
                   return (
                     <button
                       key={opt.id}
                       onClick={() => setAnswers({ ...answers, installazione: opt.id })}
-                      className={`py-8 px-6 rounded-xl border-2 text-center transition-all duration-300 hover:shadow-md ${
+                      className={`relative py-6 px-5 rounded-xl border-2 text-left transition-all duration-300 hover:shadow-md ${
                         selected
                           ? `${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
                           : `${opt.color.borderLight} ${opt.color.bg} ${opt.color.hoverBorder}`
                       }`}
                     >
-                      <div className={`w-12 h-12 rounded-xl mx-auto mb-4 flex items-center justify-center ${selected ? opt.color.iconBg : 'bg-gray-100'}`}>
-                        <opt.Icon className={`w-5 h-5 ${selected ? opt.color.icon : 'text-gray-400'}`} />
+                      {/* Badge per Fornitura + Posa */}
+                      {opt.badge && (
+                        <div className="absolute -top-3 right-4 bg-emerald-500 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow-lg shadow-emerald-500/30">
+                          {opt.badge}
+                        </div>
+                      )}
+
+                      <div className="flex items-start gap-3 mb-3">
+                        <div className={`w-10 h-10 rounded-lg flex-shrink-0 flex items-center justify-center ${selected ? opt.color.iconBg : 'bg-gray-100'}`}>
+                          <opt.Icon className={`w-5 h-5 ${selected ? opt.color.icon : 'text-gray-400'}`} />
+                        </div>
+                        <div className="flex-1">
+                          <div className="text-base font-bold text-gray-900">{opt.label}</div>
+                          <div className="text-xs text-gray-400 leading-relaxed">{opt.sub}</div>
+                        </div>
                       </div>
-                      <div className="text-base font-bold text-gray-900 mb-2">{opt.label}</div>
-                      <div className="text-xs text-gray-400 leading-relaxed">{opt.sub}</div>
+                      
+                      {/* Incluso list — ALWAYS visible for Fornitura + Posa */}
+                      {opt.included && (
+                        <div className={`mt-4 pt-4 border-t border-current border-opacity-10 space-y-2 ${opt.badge ? 'mt-6' : ''}`}>
+                          {opt.included.map((item, i) => (
+                            <div key={i} className="flex items-start gap-2.5">
+                              <Check className={`w-4 h-4 ${opt.color.icon} mt-0.5 flex-shrink-0`} />
+                              <span className="text-xs text-gray-600 font-medium">{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
                     </button>
                   )
                 })}
