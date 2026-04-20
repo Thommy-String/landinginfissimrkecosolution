@@ -1,4 +1,6 @@
 import { Phone } from 'lucide-react'
+import logo from '../assets/images/logo/logoMRKEcoSolution-removebg-preview.png'
+import azienda from '../datiAziendali'
 
 export default function Navbar() {
   return (
@@ -7,7 +9,7 @@ export default function Navbar() {
         {/* Logo e Info Azienda */}
         <div className="flex items-center gap-4">
           <img
-            src="/src/assets/images/logo/logoMRKEcoSolution-removebg-preview.png"
+            src={logo}
             alt="MRK Eco Solution"
             className="h-12 w-auto object-contain"
           />
@@ -19,11 +21,11 @@ export default function Navbar() {
 
         {/* CTA Telefono */}
         <a
-          href="tel:+393342221212"
+          href={azienda.telefonoLink}
           className="inline-flex items-center gap-2 px-4 py-2 border-2 border-blue-500 text-blue-600 rounded-full text-xs font-medium hover:bg-blue-50 transition-all duration-300 active:scale-[0.98]"
         >
           <Phone className="w-3 h-3" />
-          <span>+39 334 222 1212</span>
+          <span>{azienda.telefono}</span>
         </a>
       </div>
     </nav>

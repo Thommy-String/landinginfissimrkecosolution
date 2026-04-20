@@ -1,16 +1,17 @@
 import { useState, useRef } from 'react'
-import { ChevronLeft, Check, ArrowRight, Phone, TrendingDown, ShieldCheck, Truck, Clock, Calculator, Plus, Trash2, Ruler, Package, Wrench, Zap, CalendarClock, HelpCircle, Star, Crown, Coins, Home, Lightbulb, Leaf, Thermometer, Shield, Wind } from 'lucide-react'
+import { ChevronLeft, Check, ArrowRight, Phone, TrendingDown, ShieldCheck, Truck, Calculator, Plus, Trash2, Ruler, Package, Wrench, Star, Crown, Coins, Home, Building, Castle, Warehouse, Lightbulb, Leaf, Thermometer, Shield, Wind } from 'lucide-react'
+
 
 import imgPvc from '../assets/images/profili/pvc.jpg'
 import imgAlluminio from '../assets/images/profili/alluminio.jpg.avif'
 import imgLegno from '../assets/images/profili/legno.jpg'
+import azienda from '../datiAziendali'
 
 const STEPS = [
   'materiale',
   'fascia',
   'misure',
   'installazione',
-  'tempistiche',
   'risultato',
 ]
 
@@ -25,13 +26,13 @@ const FASCE = [
     lowE: false,
     antisfondamento: false,
     gasArgon: false,
-    uw: '≈ 1.4 W/m²K',
+    uw: '≈ 1.6 W/m²K',
     specs: [
       { label: 'Vetrocamera', value: 'Doppio vetro 4/16/4 mm', desc: 'Due lastre di vetro con camera d\'aria da 16mm. Isolamento base ma già molto meglio di un vecchio infisso singolo vetro.', included: true },
       { label: 'Vetro basso-emissivo (Low-E)', value: 'Non incluso', desc: 'Il coating Low-E riflette il calore verso l\'interno. In questa fascia non è presente, ma l\'infisso è comunque a norma.', included: false },
       { label: 'Antisfondamento', value: 'Non incluso', desc: 'Il vetro stratificato di sicurezza non è incluso. Sufficiente per la maggior parte delle abitazioni standard.', included: false },
       { label: 'Gas Argon', value: 'Aria standard', desc: 'La camera è riempita con aria normale. L\'argon migliorerebbe l\'isolamento del 15%, ma non è necessario per un buon risultato.', included: false },
-      { label: 'Isolamento termico (Uw)', value: '≈ 1.4 W/m²K', desc: 'Valore di trasmittanza termica. Più è basso, meno calore disperdi. 1.4 è buono — già conforme alle normative vigenti.', included: true },
+      { label: 'Isolamento termico (Uw)', value: '≈ 1.6 W/m²K', desc: 'Valore di trasmittanza termica. Più è basso, meno calore disperdi. Isolamento base ma conforme alle normative vigenti.', included: true },
     ],
     moltiplicatore: 1.0,
     color: {
@@ -58,15 +59,15 @@ const FASCE = [
     perChi: 'La scelta ideale per la tua casa principale. Ottieni isolamento superiore, risparmio in bolletta e un comfort abitativo che senti subito. È la fascia che consigliamo al 70% dei clienti.',
     vetri: 'Doppio vetro 4/16/4 basso-emissivo',
     lowE: true,
-    antisfondamento: false,
+    antisfondamento: true,
     gasArgon: true,
-    uw: '≈ 1.1 W/m²K',
+    uw: '≈ 1.3 W/m²K',
     specs: [
       { label: 'Vetrocamera', value: 'Doppio vetro 4/16/4 mm', desc: 'Due lastre di vetro con camera d\'aria da 16mm — stessa struttura base ma con trattamenti superiori.', included: true },
       { label: 'Vetro basso-emissivo (Low-E)', value: 'Incluso', desc: 'Coating invisibile che riflette il calore verso l\'interno d\'inverno e lo respinge d\'estate. Riduce la dispersione fino al 30%.', included: true },
-      { label: 'Antisfondamento', value: 'Non incluso', desc: 'Non presente in questa fascia. Aggiungibile su richiesta per esigenze di sicurezza specifiche.', included: false },
+      { label: 'Antisfondamento', value: 'Vetro stratificato', desc: 'Vetro di sicurezza che protegge dai vetri rotti e aumenta la resistenza agli urti. Perfetto per la sicurezza della famiglia.', included: true },
       { label: 'Gas Argon', value: 'Incluso', desc: 'Gas inerte iniettato nella camera tra i vetri. Isola il 15% in più dell\'aria e non si disperde nel tempo.', included: true },
-      { label: 'Isolamento termico (Uw)', value: '≈ 1.1 W/m²K', desc: 'Eccellente isolamento. Significa bollette più basse e una casa che mantiene la temperatura senza sforzo.', included: true },
+      { label: 'Isolamento termico (Uw)', value: '≈ 1.3 W/m²K', desc: 'Buon isolamento. Significa bollette più basse e una casa che mantiene la temperatura adeguatamente.', included: true },
     ],
     moltiplicatore: 1.2,
     popolare: true,
@@ -90,19 +91,20 @@ const FASCE = [
     id: 'premium',
     nome: 'Fascia Alta',
     headline: 'Voglio il massimo delle prestazioni',
-    sottotitolo: 'Triplo vetro con doppio Low-E, gas Argon in entrambe le camere e vetro antieffrazione P2A.',
+    sottotitolo: 'Triplo vetro con doppio Low-E, gas Argon in entrambe le camere, canalina calda e vetro antieffrazione P2A.',
     perChi: 'Per chi non vuole compromessi. Ideale per villette, zone fredde o rumorose, e per chi vuole il massimo comfort, sicurezza antieffrazione e il miglior isolamento possibile. Investimento che si ripaga in bolletta.',
     vetri: 'Triplo vetro 4/12/4/12/4 basso-emissivo',
     lowE: true,
     antisfondamento: true,
     gasArgon: true,
-    uw: '≈ 0.8 W/m²K',
+    uw: '≈ 1.0 W/m²K',
     specs: [
       { label: 'Vetrocamera', value: 'Triplo vetro 4/12/4/12/4 mm', desc: 'Tre lastre di vetro con doppia camera. Isolamento termico e acustico ai massimi livelli — senti subito la differenza.', included: true },
       { label: 'Vetro basso-emissivo (Low-E)', value: 'Doppio coating', desc: 'Due strati di coating Low-E su lastre diverse. Massima riflessione del calore, efficienza quasi da "casa passiva".', included: true },
       { label: 'Antisfondamento', value: 'Vetro stratificato P2A', desc: 'Vetro di sicurezza certificato P2A: resiste a tentativi di effrazione e protegge dai vetri rotti. Sicurezza reale per la tua famiglia.', included: true },
       { label: 'Gas Argon', value: 'Doppia camera', desc: 'Gas argon in entrambe le camere per un isolamento termico imbattibile. Nessuna dispersione, massimo comfort.', included: true },
-      { label: 'Isolamento termico (Uw)', value: '≈ 0.8 W/m²K — top', desc: 'Il valore più basso = il miglior isolamento. 0.8 è da casa quasi passiva. Risparmi concreti in bolletta, anno dopo anno.', included: true },
+      { label: 'Canalina calda', value: 'Inclusa', desc: 'Canalina isolante in acciaio inox che minimizza i ponti termici. Riduce ulteriormente le dispersioni ai bordi del vetro.', included: true },
+      { label: 'Isolamento termico (Uw)', value: '≈ 1.0 W/m²K', desc: 'Eccellente isolamento. Significa bollette più basse e una casa che mantiene la temperatura in modo efficiente.', included: true },
     ],
     moltiplicatore: 1.55,
     color: {
@@ -175,12 +177,6 @@ const MATERIALI = [
   },
 ]
 
-const TEMPISTICHE_OPTIONS = [
-  { id: 'urgente', label: 'Il prima possibile', sub: 'Entro 2-3 settimane', Icon: Zap, color: { border: 'border-orange-200', borderLight: 'border-orange-150', bg: 'bg-orange-50/60', icon: 'text-orange-500', text: 'text-orange-700', shadow: 'shadow-orange-200/5', hoverBorder: 'hover:border-orange-300' } },
-  { id: '1-3mesi', label: 'Entro 1-3 mesi', sub: 'Tempistica standard', Icon: CalendarClock, color: { border: 'border-sky-200', borderLight: 'border-sky-150', bg: 'bg-sky-50/60', icon: 'text-sky-500', text: 'text-sky-700', shadow: 'shadow-sky-200/5', hoverBorder: 'hover:border-sky-300' } },
-  { id: 'nessuna-fretta', label: 'Nessuna fretta', sub: 'Sto solo valutando', Icon: HelpCircle, color: { border: 'border-violet-200', borderLight: 'border-violet-150', bg: 'bg-violet-50/60', icon: 'text-violet-500', text: 'text-violet-700', shadow: 'shadow-violet-200/5', hoverBorder: 'hover:border-violet-300' } },
-]
-
 export default function Quiz() {
   const [currentStep, setCurrentStep] = useState(0)
   const quizRef = useRef(null)
@@ -191,7 +187,6 @@ export default function Quiz() {
     serramenti: [{ tipo: 'finestra', larghezza: '', altezza: '' }],
     quantitaGenerica: null, // usata se non ha misure
     installazione: null,
-    tempistiche: null,
   })
 
   const stepName = STEPS[currentStep]
@@ -207,7 +202,6 @@ export default function Quiz() {
         return answers.serramenti.some(s => s.larghezza && s.altezza)
       }
       case 'installazione': return answers.installazione !== null
-      case 'tempistiche': return answers.tempistiche !== null
       case 'risultato': return true
       default: return false
     }
@@ -253,6 +247,10 @@ export default function Quiz() {
   }
 
   // --- Calcolo stima ---
+  // Posa: prezzo fisso a pezzo
+  const POSA_FABBRICA_PEZZO = 150
+  const POSA_NEGOZIO_PEZZO = 300
+
   const getEstimate = () => {
     const mat = MATERIALI.find(m => m.id === answers.materiale) || MATERIALI[0]
     const fascia = FASCE.find(f => f.id === answers.fascia) || FASCE[0]
@@ -262,8 +260,8 @@ export default function Quiz() {
     let voci = []
     let totaleMqFabbrica = 0
     let totaleMqNegozio = 0
-    let totalePosaFabbrica = 0
-    let totalePosaNegozio = 0
+    let numPezzi = 0
+    let mqTotale = 0
 
     if (answers.hasMisure === 'si') {
       answers.serramenti.forEach((s, i) => {
@@ -275,8 +273,8 @@ export default function Quiz() {
         const costoNegozio = Math.round(mq * mat.prezzoNegozioMq * molt)
         totaleMqFabbrica += costoFabbrica
         totaleMqNegozio += costoNegozio
-        totalePosaFabbrica += conPosa ? Math.round(mq * mat.posaMq) : 0
-        totalePosaNegozio += conPosa ? Math.round(mq * mat.posaNegozioMq) : 0
+        mqTotale += mq
+        numPezzi++
 
         voci.push({
           label: `${s.tipo === 'portafinestra' ? 'Portafinestra' : 'Finestra'} ${i + 1}`,
@@ -286,14 +284,13 @@ export default function Quiz() {
         })
       })
     } else {
-      const qtyMap = { '1–3': 2, '4–6': 5, '7–10': 8, '10+': 12 }
-      const num = qtyMap[answers.quantitaGenerica] || 4
+      const dwellingMap = { 'monolocale': 2, 'appartamento': 5, 'casa': 8, 'villa': 12 }
+      const num = dwellingMap[answers.quantitaGenerica] || 4
       const mqMedioPerFinestra = 1.5
-      const mqTotale = num * mqMedioPerFinestra
+      mqTotale = num * mqMedioPerFinestra
+      numPezzi = num
       totaleMqFabbrica = Math.round(mqTotale * mat.prezzoFabbricaMq * molt)
       totaleMqNegozio = Math.round(mqTotale * mat.prezzoNegozioMq * molt)
-      totalePosaFabbrica = conPosa ? Math.round(mqTotale * mat.posaMq) : 0
-      totalePosaNegozio = conPosa ? Math.round(mqTotale * mat.posaNegozioMq) : 0
 
       voci.push({
         label: `~${num} serramenti in ${mat.nome}`,
@@ -303,22 +300,21 @@ export default function Quiz() {
       })
     }
 
+    const totalePosaFabbrica = conPosa ? numPezzi * POSA_FABBRICA_PEZZO : 0
+    const totalePosaNegozio = conPosa ? numPezzi * POSA_NEGOZIO_PEZZO : 0
+
     const totaleFabbrica = totaleMqFabbrica + totalePosaFabbrica
     const totaleNegozio = totaleMqNegozio + totalePosaNegozio
     const risparmio = totaleNegozio - totaleFabbrica
     const percentualeRisparmio = totaleNegozio > 0 ? Math.round((risparmio / totaleNegozio) * 100) : 0
-
-    const tempoMap = {
-      'urgente': '2–3 settimane',
-      '1-3mesi': '1–3 mesi',
-      'nessuna-fretta': 'Da definire',
-    }
 
     return {
       mat,
       fascia,
       conPosa,
       voci,
+      numPezzi,
+      mqTotale,
       totaleMqFabbrica,
       totaleMqNegozio,
       totalePosaFabbrica,
@@ -327,7 +323,6 @@ export default function Quiz() {
       totaleNegozio,
       risparmio,
       percentualeRisparmio,
-      tempistica: tempoMap[answers.tempistiche] || '',
       hasMisure: answers.hasMisure === 'si',
     }
   }
@@ -341,18 +336,68 @@ export default function Quiz() {
   return (
     <section id="quiz" ref={quizRef} className="bg-[#fafafa] pb-20 px-6 scroll-mt-4">
       <div className="max-w-4xl mx-auto">
-        {/* Intro quiz */}
-        <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">
-            ⚡ Configura i tuoi infissi in 60 secondi
+
+        
+
+        {/* Titolo con chevron animato */}
+        <div className="text-center pt-6">
+          <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.065em] text-gray-900 leading-[1.2] mb-4">
+            Quiz: {' '}
+            <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
+              Scopri quanto Risparmi
+            </span> acquistando dalla Fabbrica
           </h2>
-          <p className="text-gray-500 text-sm">Rispondi a poche domande e scopri quanto risparmi</p>
+
+          {/* Badge: nessuna registrazione + risultato immediato - solo testo colorato */}
+          <div className="flex flex-wrap items-center justify-center gap-3 mb-6">
+            <div className="flex items-center gap-1.5">
+              <span className="text-red-400 font-bold text-sm">✕</span>
+              <span className="text-xs font-semibold text-red-500">Non chiediamo email / telefono</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <svg className="w-4 h-4 text-emerald-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              <span className="text-xs font-semibold text-emerald-600">Risultato immediato</span>
+            </div>
+          </div>
+
+          <div className="flex justify-center py-0">
+            <style>{`
+              @keyframes slideDown {
+                0% {
+                  transform: translateY(-12px);
+                  opacity: 1;
+                }
+                100% {
+                  transform: translateY(12px);
+                  opacity: 0;
+                }
+              }
+              .chevron-animate {
+                animation: slideDown 2s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+              }
+            `}</style>
+            <svg 
+              className="w-5 h-5 text-emerald-500 chevron-animate" 
+              fill="none" 
+              stroke="currentColor" 
+              strokeWidth={2.5}
+              viewBox="0 0 24 24"
+            >
+              <path 
+                strokeLinecap="round" 
+                strokeLinejoin="round" 
+                d="M19 14l-7 7m0 0l-7-7" 
+              />
+            </svg>
+          </div>
         </div>
 
         {/* Progress bar */}
         <div className="mb-10">
           <div className="flex justify-between text-xs text-gray-400 mb-2 font-medium">
-            <span>Passo {currentStep + 1} di {STEPS.length}</span>
+            <span>Domanda {currentStep + 1} di {STEPS.length}</span>
             <span>{Math.round(progress)}%</span>
           </div>
           <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
@@ -405,11 +450,11 @@ export default function Quiz() {
                         </div>
                       )}
 
-                      <div className="h-40 bg-gray-100 overflow-hidden">
+                      <div className="h-40 bg-white overflow-hidden flex items-center justify-center">
                         <img
                           src={mat.image}
                           alt={mat.nome}
-                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                           onError={(e) => { e.target.style.display = 'none' }}
                         />
                       </div>
@@ -718,28 +763,95 @@ export default function Quiz() {
                 </div>
               )}
 
-              {/* Se NON ha misure: quantità generica — colori differenziati */}
+              {/* Se NON ha misure: categorie di abitazioni */}
               {answers.hasMisure === 'no' && (
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-lg mx-auto">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
                   {[
-                    { q: '1–3', color: { border: 'border-sky-200', borderLight: 'border-sky-150', bg: 'bg-sky-50/60', text: 'text-sky-700', shadow: 'shadow-sky-200/5', hoverBorder: 'hover:border-sky-300' } },
-                    { q: '4–6', color: { border: 'border-violet-200', borderLight: 'border-violet-150', bg: 'bg-violet-50/60', text: 'text-violet-700', shadow: 'shadow-violet-200/5', hoverBorder: 'hover:border-violet-300' } },
-                    { q: '7–10', color: { border: 'border-amber-200', borderLight: 'border-amber-150', bg: 'bg-amber-100/60', text: 'text-amber-700', shadow: 'shadow-amber-200/5', hoverBorder: 'hover:border-amber-300' } },
-                    { q: '10+', color: { border: 'border-emerald-200', borderLight: 'border-emerald-150', bg: 'bg-emerald-50/60', text: 'text-emerald-700', shadow: 'shadow-emerald-200/5', hoverBorder: 'hover:border-emerald-300' } },
-                  ].map(({ q, color }) => (
-                    <button
-                      key={q}
-                      onClick={() => setAnswers({ ...answers, quantitaGenerica: q })}
-                      className={`py-6 px-4 rounded-xl text-center transition-all duration-300 ${
-                        answers.quantitaGenerica === q
-                          ? `border-2 ${color.border} ${color.bg} shadow-md ${color.shadow}`
-                          : `border-0 ${color.bg} hover:shadow-md`
-                      }`}
-                    >
-                      <div className={`text-2xl font-bold mb-1 ${answers.quantitaGenerica === q ? color.text : 'text-gray-900'}`}>{q}</div>
-                      <div className="text-xs text-gray-400">serramenti</div>
-                    </button>
-                  ))}
+                    {
+                      id: 'monolocale',
+                      nome: 'Monolocale',
+                      serramenti: 2,
+                      desc: 'Studio o monolocale compatto',
+                      Icon: Warehouse,
+                      color: { border: 'border-sky-200', bg: 'bg-sky-50/60', text: 'text-sky-700', shadow: 'shadow-sky-200/5', icon: 'text-sky-500', iconBg: 'bg-sky-50' }
+                    },
+                    {
+                      id: 'appartamento',
+                      nome: 'Appartamento Medio',
+                      serramenti: 5,
+                      desc: '2–3 stanze, ingresso e cucina',
+                      Icon: Building,
+                      color: { border: 'border-violet-200', bg: 'bg-violet-50/60', text: 'text-violet-700', shadow: 'shadow-violet-200/5', icon: 'text-violet-500', iconBg: 'bg-violet-50' }
+                    },
+                    {
+                      id: 'casa',
+                      nome: 'Casa',
+                      serramenti: 8,
+                      desc: '3–4 stanze, doppi servizi',
+                      Icon: Home,
+                      color: { border: 'border-amber-200', bg: 'bg-amber-100/60', text: 'text-amber-700', shadow: 'shadow-amber-200/5', icon: 'text-amber-500', iconBg: 'bg-amber-50' }
+                    },
+                    {
+                      id: 'villa',
+                      nome: 'Villa / Palazzina',
+                      serramenti: 12,
+                      desc: '4+ stanze, con giardino o terrazzi',
+                      Icon: Castle,
+                      color: { border: 'border-emerald-200', bg: 'bg-emerald-50/60', text: 'text-emerald-700', shadow: 'shadow-emerald-200/5', icon: 'text-emerald-500', iconBg: 'bg-emerald-50' }
+                    },
+                  ].map((dwelling) => {
+                    const selected = answers.quantitaGenerica === dwelling.id
+                    return (
+                      <button
+                        key={dwelling.id}
+                        onClick={() => {
+                          setAnswers({ ...answers, quantitaGenerica: dwelling.id })
+                          setTimeout(() => {
+                            setCurrentStep(3)
+                            scrollToQuiz()
+                          }, 400)
+                        }}
+                        className={`relative py-6 px-5 rounded-xl text-left transition-all duration-300 hover:shadow-md overflow-hidden ${
+                          selected
+                            ? `border-2 ${dwelling.color.border} ${dwelling.color.bg} shadow-md ${dwelling.color.shadow}`
+                            : `border-0 ${dwelling.color.bg}`
+                        }`}
+                      >
+                        {/* Background accent */}
+                        <div className="absolute -bottom-8 -right-8 opacity-5 pointer-events-none">
+                          <dwelling.Icon className="w-32 h-32 text-gray-900" />
+                        </div>
+
+                        <div className="relative z-10">
+                          {/* Header: icon + title */}
+                          <div className="flex items-start gap-3 mb-3">
+                            <div className={`w-10 h-10 rounded-lg flex items-center justify-center shrink-0 ${dwelling.color.iconBg}`}>
+                              <dwelling.Icon className={`w-5 h-5 ${dwelling.color.icon}`} />
+                            </div>
+                            <div className="flex-1">
+                              <h5 className={`text-base font-bold ${dwelling.color.text}`}>{dwelling.nome}</h5>
+                              <p className="text-xs text-gray-500 leading-snug">{dwelling.desc}</p>
+                            </div>
+                          </div>
+
+                          {/* Serramenti count */}
+                          <div className="flex items-baseline gap-2 mt-4 pt-3 border-t border-gray-200/40">
+                            <div className="text-2xl font-bold text-gray-900">{dwelling.serramenti}</div>
+                            <div className="text-xs font-medium text-gray-500">serramenti in media</div>
+                          </div>
+
+                          {/* Selection badge */}
+                          {selected && (
+                            <div className="absolute top-2 right-2">
+                              <div className={`w-6 h-6 rounded-full ${dwelling.color.bg} border-2 ${dwelling.color.border} flex items-center justify-center`}>
+                                <Check className={`w-4 h-4 ${dwelling.color.icon}`} />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      </button>
+                    )
+                  })}
                 </div>
               )}
             </div>
@@ -760,7 +872,13 @@ export default function Quiz() {
                   return (
                     <button
                       key={opt.id}
-                      onClick={() => setAnswers({ ...answers, installazione: opt.id })}
+                      onClick={() => {
+                        setAnswers({ ...answers, installazione: opt.id })
+                        setTimeout(() => {
+                          setCurrentStep(4)
+                          scrollToQuiz()
+                        }, 400)
+                      }}
                       className={`relative py-6 px-5 rounded-xl text-left transition-all duration-300 hover:shadow-md ${
                         selected
                           ? `border-2 ${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
@@ -802,69 +920,76 @@ export default function Quiz() {
             </div>
           )}
 
-          {/* ==================== STEP 5: TEMPISTICHE ==================== */}
-          {stepName === 'tempistiche' && (
-            <div className="flex-1">
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2">Quando ti servirebbero?</h3>
-              <p className="text-sm text-gray-400 mb-8">Così organizziamo la produzione al meglio.</p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-xl mx-auto">
-                {TEMPISTICHE_OPTIONS.map((opt) => {
-                  const selected = answers.tempistiche === opt.id
-                  return (
-                    <button
-                      key={opt.id}
-                      onClick={() => setAnswers({ ...answers, tempistiche: opt.id })}
-                      className={`py-8 px-6 rounded-xl text-center transition-all duration-300 hover:shadow-md ${
-                        selected
-                          ? `border-2 ${opt.color.border} ${opt.color.bg} shadow-md ${opt.color.shadow}`
-                          : `border-0 ${opt.color.bg}`
-                      }`}
-                    >
-                      <opt.Icon className={`w-6 h-6 mx-auto mb-3 ${opt.color.icon}`} />
-                      <div className={`text-base font-bold mb-1 ${selected ? opt.color.text : 'text-gray-900'}`}>{opt.label}</div>
-                      <div className="text-xs text-gray-400">{opt.sub}</div>
-                    </button>
-                  )
-                })}
-              </div>
-            </div>
-          )}
-
-          {/* ==================== STEP 6: RISULTATO ==================== */}
+          {/* ==================== STEP 5: RISULTATO ==================== */}
           {stepName === 'risultato' && (() => {
             const est = getEstimate()
+            const IconFascia = est.fascia.id === 'economy' ? Coins : est.fascia.id === 'qualita-prezzo' ? Star : Crown
             return (
-              <div className="flex-1">
-                <div className="text-center mb-8">
+              <div className="flex-1 space-y-8">
+
+                {/* ——— HEADER ——— */}
+                <div className="text-center">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/60 mb-4">
                     <Calculator className="w-3.5 h-3.5 text-emerald-600" />
                     <span className="text-xs font-semibold text-emerald-700 uppercase tracking-wide">
                       {est.hasMisure ? 'Preventivo su misura' : 'Stima indicativa'}
                     </span>
                   </div>
-                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900">Ecco quanto risparmi con noi</h3>
+                  <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-1">Ecco il tuo riepilogo completo</h3>
+                  <p className="text-sm text-gray-400">Tutto quello che hai scelto, confrontato e spiegato</p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                  {/* Colonna sinistra: dettaglio voci */}
-                  <div className="space-y-3">
-                    <h4 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Dettaglio configurazione</h4>
-
-                    {/* Fascia scelta */}
-                    <div className="bg-gray-50 rounded-xl p-4">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-sm font-semibold text-gray-900">Vetrata: {est.fascia.nome}</span>
-                        <span className={`text-[10px] font-bold uppercase px-2 py-0.5 rounded-full ${est.fascia.color.badge}`}>{est.fascia.vetri.split(' ')[0]} vetro</span>
-                      </div>
-                      <p className="text-xs text-gray-400">{est.fascia.vetri}{est.fascia.lowE ? ' • Low-E' : ''}{est.fascia.antisfondamento ? ' • Antisfondamento' : ''}{est.fascia.gasArgon ? ' • Gas Argon' : ''}</p>
+                {/* ═══════════════ SEZIONE 1: RIEPILOGO SCELTE ═══════════════ */}
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-white">1</span>
                     </div>
+                    <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Le tue scelte</h4>
+                  </div>
 
+                  <div className="flex flex-wrap gap-2">
+                    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${est.mat.accent.bg} border ${est.mat.accent.border} border-opacity-30`}>
+                      <Package className={`w-3.5 h-3.5 ${est.mat.accent.text}`} />
+                      <span className="text-xs font-semibold text-gray-700">{est.mat.nome}</span>
+                    </div>
+                    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${est.fascia.color.bg} border ${est.fascia.color.border} border-opacity-30`}>
+                      <IconFascia className={`w-3.5 h-3.5 ${est.fascia.color.icon}`} />
+                      <span className="text-xs font-semibold text-gray-700">{est.fascia.nome}</span>
+                    </div>
+                    <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${est.conPosa ? 'bg-emerald-50/60 border border-emerald-200/30' : 'bg-sky-50/60 border border-sky-200/30'}`}>
+                      <Wrench className={`w-3.5 h-3.5 ${est.conPosa ? 'text-emerald-500' : 'text-sky-500'}`} />
+                      <span className="text-xs font-semibold text-gray-700">{est.conPosa ? 'Fornitura + Posa' : 'Solo fornitura'}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ═══════════════ SEZIONE 2: DETTAGLIO COSTI ═══════════════ */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-white">2</span>
+                    </div>
+                    <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Dettaglio costi</h4>
+                  </div>
+
+                  {/* Column headers */}
+                  <div className="flex items-center justify-end gap-1 mb-2 px-4">
+                    <div className="flex items-center gap-4">
+                      <span className="text-[10px] font-semibold text-emerald-600 uppercase tracking-wider">Nostro prezzo</span>
+                      <span className="text-[10px] font-semibold text-red-400 uppercase tracking-wider">Prezzo nei negozi</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2">
                     {est.voci.map((v, i) => (
                       <div key={i} className="bg-gray-50 rounded-xl p-4">
                         <div className="flex items-center justify-between mb-1">
                           <span className="text-sm font-semibold text-gray-900">{v.label}</span>
-                          <span className="text-sm font-bold text-gray-900">{fmt(v.fabbrica)}</span>
+                          <div className="flex items-center gap-4">
+                            <span className="text-sm font-bold text-emerald-700">{fmt(v.fabbrica)}</span>
+                            <span className="text-xs text-red-400 line-through shrink-0">{fmt(v.negozio)}</span>
+                          </div>
                         </div>
                         <p className="text-xs text-gray-400">{v.desc}</p>
                       </div>
@@ -873,39 +998,52 @@ export default function Quiz() {
                     {est.conPosa && (
                       <div className="bg-gray-50 rounded-xl p-4">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-gray-900">Posa in opera certificata</span>
-                          <span className="text-sm font-bold text-gray-900">{fmt(est.totalePosaFabbrica)}</span>
+                          <div className="flex items-center gap-2">
+                            <Wrench className="w-3.5 h-3.5 text-emerald-500" />
+                            <span className="text-sm font-semibold text-gray-900">Posa in opera certificata</span>
+                          </div>
+                          <div className="flex items-center gap-4">
+                            <span className="text-sm font-bold text-emerald-700">{fmt(est.totalePosaFabbrica)}</span>
+                            <span className="text-xs text-red-400 line-through shrink-0">{fmt(est.totalePosaNegozio)}</span>
+                          </div>
                         </div>
-                        <p className="text-xs text-gray-400">Posatori professionisti — {fmt(est.mat.posaMq)}/mq</p>
+                        <p className="text-xs text-gray-400 ml-5.5">Posatori professionisti — {fmt(POSA_FABBRICA_PEZZO)}/pezzo × {est.numPezzi} pezzi</p>
                       </div>
                     )}
 
                     {!est.conPosa && (
-                      <div className="bg-gray-50 rounded-xl p-4">
-                        <div className="flex items-center justify-between mb-1">
-                          <span className="text-sm font-semibold text-gray-900">Posa in opera</span>
-                          <span className="text-sm font-medium text-gray-400">Non inclusa</span>
+                      <div className="bg-gray-50/50 rounded-xl p-4 border border-dashed border-gray-200">
+                        <div className="flex items-center gap-2">
+                          <Package className="w-3.5 h-3.5 text-gray-400" />
+                          <span className="text-sm font-medium text-gray-400">Solo fornitura — posa non inclusa</span>
                         </div>
-                        <p className="text-xs text-gray-400">Solo fornitura — userai i tuoi installatori</p>
                       </div>
                     )}
+                  </div>
+                </div>
 
-                    <div className="bg-gray-50 rounded-xl p-4">
-                      <div className="flex items-center gap-2 mb-1">
-                        <Clock className="w-3.5 h-3.5 text-gray-400" />
-                        <span className="text-sm font-semibold text-gray-900">Consegna stimata</span>
-                      </div>
-                      <p className="text-xs text-gray-400">{est.tempistica} — produzione su misura</p>
+                {/* ═══════════════ SEZIONE 3: CONFRONTO PREZZI ═══════════════ */}
+                <div>
+                  <div className="flex items-center gap-2 mb-4">
+                    <div className="w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-white">3</span>
                     </div>
+                    <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Quanto risparmi</h4>
                   </div>
 
-                  {/* Colonna destra: confronto prezzi */}
-                  <div className="space-y-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     {/* Box negozio */}
-                    <div className="rounded-xl border-2 border-red-200/60 bg-red-50/30 p-5">
+                    <div className="rounded-xl border-2 border-red-200/60 bg-red-50/30 p-5 relative overflow-visible">
+                      {/* Red X overlay */}
+                      <div className="absolute -top-6 -right-6 text-red-300/30 pointer-events-none">
+                        <svg className="w-48 h-48" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round">
+                          <line x1="10" y1="10" x2="90" y2="90" />
+                          <line x1="90" y1="10" x2="10" y2="90" />
+                        </svg>
+                      </div>
                       <div className="flex items-center gap-2 mb-4">
                         <div className="w-2 h-2 rounded-full bg-red-400" />
-                        <span className="text-xs font-semibold text-red-800 uppercase tracking-wider">Prezzo showroom / negozio</span>
+                        <span className="text-xs font-semibold text-red-800 uppercase tracking-wider">Prezzo di mercato nei negozi</span>
                       </div>
                       <div className="space-y-2 mb-4">
                         <div className="flex justify-between text-sm">
@@ -920,7 +1058,7 @@ export default function Quiz() {
                         )}
                       </div>
                       <div className="border-t border-red-200/50 pt-3 flex justify-between items-center">
-                        <span className="text-sm font-semibold text-red-700">Totale negozio</span>
+                        <span className="text-sm font-semibold text-red-700">Totale</span>
                         <span className="text-2xl font-bold text-red-600 line-through decoration-2">{fmt(est.totaleNegozio)}</span>
                       </div>
                     </div>
@@ -928,12 +1066,11 @@ export default function Quiz() {
                     {/* Box fabbrica */}
                     <div className="rounded-xl border-2 border-emerald-300 bg-emerald-50/40 p-5 relative overflow-hidden">
                       <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded-bl-lg flex items-center gap-1">
-                        <span>Risparmi</span>
                         <span>-{est.percentualeRisparmio}%</span>
                       </div>
                       <div className="flex items-center gap-2 mb-4">
                         <div className="w-2 h-2 rounded-full bg-emerald-500" />
-                        <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Il tuo prezzo di fabbrica</span>
+                        <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Nostro prezzo — diretto fabbrica</span>
                       </div>
                       <div className="space-y-2 mb-4">
                         <div className="flex justify-between text-sm">
@@ -948,23 +1085,184 @@ export default function Quiz() {
                         )}
                       </div>
                       <div className="border-t border-emerald-300/50 pt-3 flex justify-between items-center">
-                        <span className="text-sm font-semibold text-emerald-700">Totale fabbrica</span>
+                        <span className="text-sm font-semibold text-emerald-700">Totale</span>
                         <span className="text-3xl font-bold text-emerald-600">{fmt(est.totaleFabbrica)}</span>
                       </div>
                     </div>
+                  </div>
 
-                    {/* Risparmio totale */}
-                    <div className="rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 p-5 text-white text-center">
-                      <TrendingDown className="w-5 h-5 mx-auto mb-2 opacity-80" />
-                      <div className="text-xs uppercase tracking-wider opacity-80 mb-1">Risparmio totale stimato</div>
-                      <div className="text-3xl sm:text-4xl font-bold">{fmt(est.risparmio)}</div>
-                      <div className="text-sm opacity-80 mt-1">sulla stessa identica qualità</div>
+                  {/* Risparmio banner */}
+                  <div className="mt-4 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 p-5 text-white">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <TrendingDown className="w-6 h-6 opacity-80" />
+                        <div>
+                          <div className="text-xs uppercase tracking-wider opacity-80">Risparmio totale</div>
+                          <div className="text-sm opacity-80">sulla stessa identica qualità</div>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <div className="text-3xl sm:text-4xl font-bold">{fmt(est.risparmio)}</div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                {/* Garanzie */}
-                <div className="mt-8 pt-6 border-t border-gray-100">
+                {/* ═══════════════ SEZIONE 4: CONFRONTO FASCE ═══════════════ */}
+                <div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-6 h-6 rounded-full bg-gray-900 flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-white">4</span>
+                    </div>
+                    <h4 className="text-sm font-bold text-gray-900 uppercase tracking-wider">Confronto fasce</h4>
+                  </div>
+                  <p className="text-xs text-gray-400 mb-4 ml-8">Hai scelto <strong className={est.fascia.color.text}>{est.fascia.nome}</strong> — ecco come si confronta con le altre opzioni.</p>
+
+                  {/* Tabella confronto */}
+                  <div className="overflow-x-auto -mx-2 px-2">
+                    <table className="w-full text-xs">
+                      <thead>
+                        <tr>
+                          <th className="text-left py-2 px-3 text-[10px] font-semibold text-gray-400 uppercase tracking-wider w-[30%]">Caratteristica</th>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            const Ic = f.id === 'economy' ? Coins : f.id === 'qualita-prezzo' ? Star : Crown
+                            return (
+                              <th key={f.id} className={`text-center py-2 px-2 rounded-t-lg ${isSelected ? `${f.color.bg} border-t-2 border-x-2 ${f.color.border}` : ''}`}>
+                                <div className="flex flex-col items-center gap-1">
+                                  <Ic className={`w-3.5 h-3.5 ${f.color.icon}`} />
+                                  <span className={`text-[10px] font-bold uppercase tracking-wider ${isSelected ? f.color.text : 'text-gray-500'}`}>{f.nome}</span>
+                                  {isSelected && (
+                                    <span className={`text-[8px] font-bold uppercase px-1.5 py-0.5 rounded-full bg-white ${f.color.text}`}>La tua scelta</span>
+                                  )}
+                                </div>
+                              </th>
+                            )
+                          })}
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-100">
+                        {/* Vetrocamera */}
+                        <tr>
+                          <td className="py-2.5 px-3 text-gray-600 font-medium">Vetrocamera</td>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            return (
+                              <td key={f.id} className={`py-2.5 px-2 text-center font-semibold ${isSelected ? `${f.color.bg} border-x-2 ${f.color.border} text-gray-900` : 'text-gray-500'}`}>
+                                {f.vetri.includes('Triplo') ? 'Triplo vetro' : 'Doppio vetro'}
+                              </td>
+                            )
+                          })}
+                        </tr>
+                        {/* Low-E */}
+                        <tr>
+                          <td className="py-2.5 px-3 text-gray-600 font-medium">Vetro Low-E</td>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            return (
+                              <td key={f.id} className={`py-2.5 px-2 text-center ${isSelected ? `${f.color.bg} border-x-2 ${f.color.border}` : ''}`}>
+                                {f.lowE
+                                  ? <span className="text-emerald-600 font-bold">✓ {f.id === 'premium' ? 'Doppio' : 'Sì'}</span>
+                                  : <span className="text-gray-300">—</span>
+                                }
+                              </td>
+                            )
+                          })}
+                        </tr>
+                        {/* Gas Argon */}
+                        <tr>
+                          <td className="py-2.5 px-3 text-gray-600 font-medium">Gas Argon</td>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            return (
+                              <td key={f.id} className={`py-2.5 px-2 text-center ${isSelected ? `${f.color.bg} border-x-2 ${f.color.border}` : ''}`}>
+                                {f.gasArgon
+                                  ? <span className="text-emerald-600 font-bold">✓ {f.id === 'premium' ? '2 camere' : 'Sì'}</span>
+                                  : <span className="text-gray-300">—</span>
+                                }
+                              </td>
+                            )
+                          })}
+                        </tr>
+                        {/* Antisfondamento */}
+                        <tr>
+                          <td className="py-2.5 px-3 text-gray-600 font-medium">Antieffrazione</td>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            return (
+                              <td key={f.id} className={`py-2.5 px-2 text-center ${isSelected ? `${f.color.bg} border-x-2 ${f.color.border}` : ''}`}>
+                                {f.antisfondamento
+                                  ? <span className="text-emerald-600 font-bold">✓ P2A</span>
+                                  : <span className="text-gray-300">—</span>
+                                }
+                              </td>
+                            )
+                          })}
+                        </tr>
+                        {/* Canalina calda */}
+                        <tr>
+                          <td className="py-2.5 px-3 text-gray-600 font-medium">Canalina calda</td>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            return (
+                              <td key={f.id} className={`py-2.5 px-2 text-center ${isSelected ? `${f.color.bg} border-x-2 ${f.color.border}` : ''}`}>
+                                {f.id === 'premium'
+                                  ? <span className="text-emerald-600 font-bold">✓ Sì</span>
+                                  : <span className="text-gray-300">—</span>
+                                }
+                              </td>
+                            )
+                          })}
+                        </tr>
+                        {/* Uw */}
+                        <tr>
+                          <td className="py-2.5 px-3 text-gray-600 font-medium">Isolamento (Uw)</td>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            return (
+                              <td key={f.id} className={`py-2.5 px-2 text-center font-semibold ${isSelected ? `${f.color.bg} border-x-2 ${f.color.border} text-gray-900` : 'text-gray-500'}`}>
+                                {f.uw}
+                              </td>
+                            )
+                          })}
+                        </tr>
+                        {/* Prezzo calcolato per fascia */}
+                        <tr>
+                          <td className="py-2.5 px-3 text-gray-600 font-medium">Prezzo</td>
+                          {FASCE.map((f) => {
+                            const isSelected = f.id === est.fascia.id
+                            const prezzoSerramentiFascia = Math.round(est.mqTotale * est.mat.prezzoFabbricaMq * f.moltiplicatore)
+                            const prezzoTotaleFascia = prezzoSerramentiFascia + (est.conPosa ? est.numPezzi * POSA_FABBRICA_PEZZO : 0)
+                            return (
+                              <td key={f.id} className={`py-2.5 px-2 text-center font-bold text-gray-900 ${isSelected ? `${f.color.bg} border-x-2 border-b-2 ${f.color.border} rounded-b-lg` : 'text-gray-700'}`}>
+                                {fmt(prezzoTotaleFascia)}
+                              </td>
+                            )
+                          })}
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+
+                  {/* Nota fascia scelta */}
+                  <div className={`mt-4 rounded-xl p-4 ${est.fascia.color.bg} border ${est.fascia.color.border}`}>
+                    <div className="flex items-start gap-3">
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 ${est.fascia.color.iconBg}`}>
+                        <IconFascia className={`w-4 h-4 ${est.fascia.color.icon}`} />
+                      </div>
+                      <div>
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className={`text-sm font-bold ${est.fascia.color.text}`}>{est.fascia.nome}</span>
+                          <span className={`text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-white/80 ${est.fascia.color.text}`}>La tua scelta</span>
+                        </div>
+                        <p className="text-xs text-gray-600 leading-relaxed">{est.fascia.perChi}</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* ═══════════════ GARANZIE ═══════════════ */}
+                <div className="pt-6 border-t border-gray-100">
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
                     <div className="flex flex-col items-center gap-1.5">
                       <ShieldCheck className="w-5 h-5 text-blue-500" />
@@ -972,30 +1270,24 @@ export default function Quiz() {
                       <span className="text-[11px] text-gray-400">Su tutti i prodotti</span>
                     </div>
                     <div className="flex flex-col items-center gap-1.5">
-                      <Truck className="w-5 h-5 text-blue-500" />
-                      <span className="text-xs font-semibold text-gray-700">Consegna inclusa</span>
+                      <Check className="w-5 h-5 text-blue-500" />
+                      <span className="text-xs font-semibold text-gray-700">Produzione Certificata</span>
                       <span className="text-[11px] text-gray-400">In tutta la Lombardia</span>
                     </div>
-                    <div className="flex flex-col items-center gap-1.5">
-                      <Calculator className="w-5 h-5 text-blue-500" />
-                      <span className="text-xs font-semibold text-gray-700">
-                        {est.hasMisure ? 'Preventivo su misura' : 'Stima indicativa'}
-                      </span>
-                      <span className="text-[11px] text-gray-400">IVA esclusa</span>
-                    </div>
+                   
                   </div>
                 </div>
 
-                {/* CTA */}
-                <div className="mt-8 text-center">
+                {/* ═══════════════ CTA ═══════════════ */}
+                <div className="text-center">
                   <a
-                    href="tel:+393342221212"
-                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-full text-base font-semibold hover:from-sky-600 hover:to-blue-700 transition-all duration-300 shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 hover:scale-[1.02] active:scale-[0.98]"
+                    href={azienda.telefonoLink}
+                    className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
                   >
                     <Phone className="w-4 h-4" />
                     Chiamaci per il preventivo esatto
                   </a>
-                  <p className="text-xs text-gray-400 mt-3">Oppure scrivici su WhatsApp al +39 334 222 1212</p>
+                  <p className="text-xs text-gray-400 mt-3">Oppure scrivici su WhatsApp al {azienda.telefono}</p>
                 </div>
               </div>
             )
@@ -1019,9 +1311,9 @@ export default function Quiz() {
               <button
                 onClick={next}
                 disabled={!canProceed()}
-                className={`inline-flex items-center gap-2 px-8 py-3 rounded-full text-sm font-semibold transition-all duration-300 ${
+                className={`inline-flex items-center gap-2 px-8 py-3 rounded-lg font-semibold transition-all duration-300 ${
                   canProceed()
-                    ? 'bg-gradient-to-r from-sky-500 to-blue-600 text-white shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/35 hover:scale-[1.02] active:scale-[0.98]'
+                    ? 'bg-gradient-to-r from-emerald-500 to-teal-600 text-white hover:shadow-lg hover:scale-105'
                     : 'bg-gray-100 text-gray-300 cursor-not-allowed'
                 }`}
               >
