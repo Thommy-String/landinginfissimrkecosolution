@@ -133,7 +133,7 @@ const MATERIALI = [
     pro: ['Massimo Isolamento termico', 'Zero manutenzione', 'Miglior rapporto qualità/prezzo'],
     contro: [],
     prezzoNegozioMq: 450,
-    prezzoFabbricaMq: 190,
+    prezzoFabbricaMq: 220,
     posaMq: 45,
     posaNegozioMq: 85,
     popolare: true,
@@ -247,9 +247,11 @@ export default function Quiz() {
   }
 
   // --- Calcolo stima ---
-  // Posa: prezzo fisso a pezzo
-  const POSA_FABBRICA_PEZZO = 150
-  const POSA_NEGOZIO_PEZZO = 300
+  // Posa: voci separate
+  const MONTAGGIO_PEZZO = 100       // montaggio nuovo infisso
+  const SMONTAGGIO_PEZZO = 30       // smontaggio vecchio
+  const SMALTIMENTO_FISSO = 200     // smaltimento fisso unico
+  const POSA_NEGOZIO_PEZZO = 300    // posa negozio (tutto incluso per confronto)
 
   const getEstimate = () => {
     const mat = MATERIALI.find(m => m.id === answers.materiale) || MATERIALI[0]
@@ -300,7 +302,10 @@ export default function Quiz() {
       })
     }
 
-    const totalePosaFabbrica = conPosa ? numPezzi * POSA_FABBRICA_PEZZO : 0
+    const totaleMontaggio = conPosa ? numPezzi * MONTAGGIO_PEZZO : 0
+    const totaleSmontaggio = conPosa ? numPezzi * SMONTAGGIO_PEZZO : 0
+    const totaleSmaltimento = conPosa ? SMALTIMENTO_FISSO : 0
+    const totalePosaFabbrica = totaleMontaggio + totaleSmontaggio + totaleSmaltimento
     const totalePosaNegozio = conPosa ? numPezzi * POSA_NEGOZIO_PEZZO : 0
 
     const totaleFabbrica = totaleMqFabbrica + totalePosaFabbrica
@@ -317,6 +322,9 @@ export default function Quiz() {
       mqTotale,
       totaleMqFabbrica,
       totaleMqNegozio,
+      totaleMontaggio,
+      totaleSmontaggio,
+      totaleSmaltimento,
       totalePosaFabbrica,
       totalePosaNegozio,
       totaleFabbrica,
@@ -996,19 +1004,38 @@ export default function Quiz() {
                     ))}
 
                     {est.conPosa && (
-                      <div className="bg-gray-50 rounded-xl p-4">
-                        <div className="flex items-center justify-between mb-1">
-                          <div className="flex items-center gap-2">
-                            <Wrench className="w-3.5 h-3.5 text-emerald-500" />
-                            <span className="text-sm font-semibold text-gray-900">Posa in opera certificata</span>
+                      <>
+                        <div className="bg-gray-50 rounded-xl p-4">
+                          <div className="flex items-center justify-between mb-1">
+                            <div className="flex items-center gap-2">
+                              <Wrench className="w-3.5 h-3.5 text-emerald-500" />
+                              <span className="text-sm font-semibold text-gray-900">Montaggio infissi</span>
+                            </div>
+                            <span className="text-sm font-bold text-emerald-700">{fmt(est.totaleMontaggio)}</span>
                           </div>
-                          <div className="flex items-center gap-4">
-                            <span className="text-sm font-bold text-emerald-700">{fmt(est.totalePosaFabbrica)}</span>
-                            <span className="text-xs text-red-400 line-through shrink-0">{fmt(est.totalePosaNegozio)}</span>
-                          </div>
+                          <p className="text-xs text-gray-400 ml-5.5">{fmt(MONTAGGIO_PEZZO)}/pezzo × {est.numPezzi} pezzi</p>
                         </div>
-                        <p className="text-xs text-gray-400 ml-5.5">Posatori professionisti — {fmt(POSA_FABBRICA_PEZZO)}/pezzo × {est.numPezzi} pezzi</p>
-                      </div>
+                        <div className="bg-gray-50 rounded-xl p-4">
+                          <div className="flex items-center justify-between mb-1">
+                            <div className="flex items-center gap-2">
+                              <Wrench className="w-3.5 h-3.5 text-orange-400" />
+                              <span className="text-sm font-semibold text-gray-900">Smontaggio esistente</span>
+                            </div>
+                            <span className="text-sm font-bold text-emerald-700">{fmt(est.totaleSmontaggio)}</span>
+                          </div>
+                          <p className="text-xs text-gray-400 ml-5.5">{fmt(SMONTAGGIO_PEZZO)}/pezzo × {est.numPezzi} pezzi</p>
+                        </div>
+                        <div className="bg-gray-50 rounded-xl p-4">
+                          <div className="flex items-center justify-between mb-1">
+                            <div className="flex items-center gap-2">
+                              <Package className="w-3.5 h-3.5 text-gray-400" />
+                              <span className="text-sm font-semibold text-gray-900">Smaltimento materiale</span>
+                            </div>
+                            <span className="text-sm font-bold text-emerald-700">{fmt(est.totaleSmaltimento)}</span>
+                          </div>
+                          <p className="text-xs text-gray-400 ml-5.5">Costo fisso una tantum</p>
+                        </div>
+                      </>
                     )}
 
                     {!est.conPosa && (
@@ -1071,17 +1098,26 @@ export default function Quiz() {
                       <div className="flex items-center gap-2 mb-4">
                         <div className="w-2 h-2 rounded-full bg-emerald-500" />
                         <span className="text-xs font-semibold text-emerald-800 uppercase tracking-wider">Nostro prezzo — diretto fabbrica</span>
-                      </div>
-                      <div className="space-y-2 mb-4">
+                      </div>                        <div className="space-y-2 mb-4">
                         <div className="flex justify-between text-sm">
                           <span className="text-gray-600">Serramenti in {est.mat.nome}</span>
                           <span className="text-gray-600">{fmt(est.totaleMqFabbrica)}</span>
                         </div>
                         {est.conPosa && (
-                          <div className="flex justify-between text-sm">
-                            <span className="text-gray-600">Posa in opera</span>
-                            <span className="text-gray-600">{fmt(est.totalePosaFabbrica)}</span>
-                          </div>
+                          <>
+                            <div className="flex justify-between text-sm">
+                              <span className="text-gray-600">Montaggio infissi</span>
+                              <span className="text-gray-600">{fmt(est.totaleMontaggio)}</span>
+                            </div>
+                            <div className="flex justify-between text-sm">
+                              <span className="text-gray-600">Smontaggio esistente</span>
+                              <span className="text-gray-600">{fmt(est.totaleSmontaggio)}</span>
+                            </div>
+                            <div className="flex justify-between text-sm">
+                              <span className="text-gray-600">Smaltimento vecchio materiale</span>
+                              <span className="text-gray-600">{fmt(est.totaleSmaltimento)}</span>
+                            </div>
+                          </>
                         )}
                       </div>
                       <div className="border-t border-emerald-300/50 pt-3 flex justify-between items-center">
@@ -1232,7 +1268,7 @@ export default function Quiz() {
                           {FASCE.map((f) => {
                             const isSelected = f.id === est.fascia.id
                             const prezzoSerramentiFascia = Math.round(est.mqTotale * est.mat.prezzoFabbricaMq * f.moltiplicatore)
-                            const prezzoTotaleFascia = prezzoSerramentiFascia + (est.conPosa ? est.numPezzi * POSA_FABBRICA_PEZZO : 0)
+                            const prezzoTotaleFascia = prezzoSerramentiFascia + (est.conPosa ? (est.numPezzi * MONTAGGIO_PEZZO) + (est.numPezzi * SMONTAGGIO_PEZZO) + SMALTIMENTO_FISSO : 0)
                             return (
                               <td key={f.id} className={`py-2.5 px-2 text-center font-bold text-gray-900 ${isSelected ? `${f.color.bg} border-x-2 border-b-2 ${f.color.border} rounded-b-lg` : 'text-gray-700'}`}>
                                 {fmt(prezzoTotaleFascia)}

@@ -7,7 +7,7 @@ const GOOGLE_LOGO = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/G
 export default function SocialProof() {
 
   return (
-    <section className="bg-white py-2 sm:py-20 px-6">
+    <section className="bg-white py-2 pt-8 sm:py-20 px-6">
       <div className="max-w-5xl mx-auto">
 
 
@@ -19,7 +19,7 @@ export default function SocialProof() {
             {' '}
             <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
               <br />
-              Taglia i costi del negozio.
+              Taglia i costi dei negozi.
             </span>
           </h2>
 

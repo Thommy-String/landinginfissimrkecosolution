@@ -33,15 +33,7 @@ export default function ProfileQuality() {
           <p className="text-sm sm:text-base font-medium text-gray-600 leading-relaxed mb-8">
             I migliori profili europei per durabilità, isolamento termico e resistenza nel tempo. Garanzia decennale.
           </p>
-          <button 
-            onClick={() => document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })}
-            className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-orange-500 to-amber-600 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"
-          >
-            Calcola Gratis la tua Stima di Spesa
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
-            </svg>
-          </button>
+         
           <div className="flex flex-col items-center justify-center gap-1 mt-3">
             <div className="flex items-center justify-center gap-2">
               <svg className="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
