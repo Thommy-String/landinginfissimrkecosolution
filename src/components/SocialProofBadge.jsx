@@ -36,7 +36,7 @@ export default function SocialProofBadge() {
           ))}
         </div>
         <span className="text-xs font-semibold text-gray-300 whitespace-nowrap">
-          Scelto da più di <span className="text-emerald-400 font-bold">300 famiglie e aziende</span>
+          Scelto da più di <span className="text-emerald-400 font-bold">316 famiglie e aziende</span>
         </span>
       </div>
     </div>

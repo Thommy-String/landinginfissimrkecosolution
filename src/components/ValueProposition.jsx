@@ -9,12 +9,12 @@ export default function ValueProposition() {
           {/* Problem headline */}
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-[-0.065em] text-gray-900 leading-[1.3] mb-6">
             <span className="relative inline-block text-black">
-              <span className="relative z-10">15.000€ dal rivenditore.</span>
+              <span className="relative z-10">10.000€ dal rivenditore?</span>
               <span className="absolute left-[-10px] right-[-10px] top-1/2 h-[3px] sm:h-[4px] bg-red-300 -translate-y-1/2 rounded-full" />
             </span>
             {' '}<br />
             <span className="bg-gradient-to-r from-emerald-500 to-teal-600 bg-clip-text text-transparent">
-             7.500€ dalla Fabbrica.
+             5.000€ dalla Fabbrica.
             </span>
           </h2>
 

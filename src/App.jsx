@@ -8,6 +8,7 @@ import WindowMaintenance from './components/WindowMaintenance'
 import ValueProposition from './components/ValueProposition'
 import LocationShowcase from './components/LocationShowcase'
 import Footer from './components/Footer'
+import FloatingCTA from './components/FloatingCTA'
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <LocationShowcase />
       </main>
       <Footer />
+      <FloatingCTA />
     </>
   )
 }

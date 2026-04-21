@@ -17,8 +17,9 @@ export default function ProductionVideo() {
             </span>
           </h2>
           <p className="text-sm sm:text-base font-medium text-gray-600 leading-relaxed mb-8">
-            Salta gli Intermediari e compra dalla fonte. Stessa qualità certificata al puro costo di produzione.
-          </p>
+Quando compri in negozio, paghi tre cose: la finestra, l'affitto del negozio e la provvigione del venditore.
+
+Da noi paghi solo la finestra.          </p>
           <button 
             onClick={() => document.getElementById('quiz')?.scrollIntoView({ behavior: 'smooth' })}
             className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-semibold rounded-lg hover:shadow-lg hover:scale-105 transition-all duration-300 cursor-pointer"

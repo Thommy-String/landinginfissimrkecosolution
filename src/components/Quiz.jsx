@@ -340,7 +340,7 @@ export default function Quiz() {
         
 
         {/* Titolo con chevron animato */}
-        <div className="text-center pt-6">
+        <div className="text-center pt-48">
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.065em] text-gray-900 leading-[1.2] mb-4">
             Quiz: {' '}
             <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">

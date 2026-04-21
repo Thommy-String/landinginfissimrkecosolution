@@ -22,6 +22,7 @@ export default function Navbar() {
         {/* CTA Telefono */}
         <a
           href={azienda.telefonoLink}
+          onClick={() => window.gtag_report_conversion && window.gtag_report_conversion(azienda.telefonoLink)}
           className="inline-flex items-center gap-2 px-4 py-2 border-2 border-blue-500 text-blue-600 rounded-full text-xs font-medium hover:bg-blue-50 transition-all duration-300 active:scale-[0.98]"
         >
           <Phone className="w-3 h-3" />

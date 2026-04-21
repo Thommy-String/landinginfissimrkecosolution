@@ -9,7 +9,7 @@ export default function ProfileQuality() {
         {/* Header */}
         <div className="mb-10 text-center max-w-2xl mx-auto">
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.065em] text-gray-900 leading-[1.2] mb-7">
-             Profili dalla Germania Certificati.{' '}
+             Profili Tedeschi Certificati.{' '}
             <span className="bg-gradient-to-r from-orange-500 to-amber-600 bg-clip-text text-transparent">
               <br></br>Produciamo Infissi fatti per durare.
             </span>

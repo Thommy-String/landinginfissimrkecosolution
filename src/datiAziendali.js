@@ -8,10 +8,10 @@ const azienda = {
   // Contatti
   telefono: '+39 334 222 1212',
   telefonoLink: 'tel:+393342221212',
-  email: 'info@ecosolutionsas.com',
-  emailLink: 'mailto:info@ecosolutionsas.com',
+  email: 'info@ecosolutionsas.it',
+  emailLink: 'mailto:info@ecosolutionsas.it',
   whatsapp: '+39 334 222 1212',
-  whatsappLink: 'https://wa.me/00393342221212',
+  whatsappLink: 'https://wa.me/393342221212?text=Ciao%20MRk-Ecosolution',
 
   // Sede operativa
   via: 'Via Roma, 8',

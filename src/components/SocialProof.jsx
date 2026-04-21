@@ -5,22 +5,25 @@ import SocialProofBadge from './SocialProofBadge'
 const GOOGLE_LOGO = 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/3840px-Google_%22G%22_logo.svg.png'
 
 export default function SocialProof() {
-  
+
   return (
-    <section className="bg-white py-16 sm:py-20 px-6">
+    <section className="bg-white py-2 sm:py-20 px-6">
       <div className="max-w-5xl mx-auto">
 
 
-          <SocialProofBadge />
+
         {/* ══════════ TITOLO SEZIONE ══════════ */}
         <div className="mb-6 mt-6 text-center">
-          <h2 className="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.065em] text-gray-900 leading-[1.2] mb-6">
-             Più di{' '}
-            <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
-              4.251 infissi venduti l'anno
+          <h2 className="text-xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.055em] text-gray-900 leading-[1.2] mb-6">
+            Stessa finestra, metà prezzo.
+            {' '}
+            <span className="bg-gradient-to-r from-green-600 to-emerald-500 bg-clip-text text-transparent">
+              <br />
+              Taglia i costi del negozio.
             </span>
           </h2>
 
+          
         </div>
 
         {/* ══════════ CARD UNICA: VIDEO SFONDO + RECENSIONE INTEGRATA ══════════ */}
@@ -63,11 +66,11 @@ export default function SocialProof() {
               </div>
 
               <p className="text-sm sm:text-base font-medium text-white/95 leading-relaxed max-w-xl mb-3">
-                "Preventivo quasi metà prezzo rispetto al negozio per stessa marca VEKA che avevo visto in showroom. Consigliato. Tra ordine e consegna arrivete in 24 giorni."
+                "Preventivo quasi metà prezzo rispetto al negozio per stessa marca VEKA che avevo visto in showroom. Consigliato. Tra ordine e consegna arrivete in 3 settimane."
               </p>
               <div className="flex items-center gap-2">
-                <img 
-                  src={profileImg} 
+                <img
+                  src={profileImg}
                   alt="Fabiano Ripetti"
                   className="w-7 h-7 rounded-full object-cover border border-white/20"
                 />
