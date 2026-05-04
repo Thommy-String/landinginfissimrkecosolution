@@ -133,7 +133,7 @@ const MATERIALI = [
     pro: ['Massimo Isolamento termico', 'Zero manutenzione', 'Miglior rapporto qualità/prezzo'],
     contro: [],
     prezzoNegozioMq: 450,
-    prezzoFabbricaMq: 220,
+    prezzoFabbricaMq: 260,
     posaMq: 45,
     posaNegozioMq: 85,
     popolare: true,
@@ -482,7 +482,7 @@ export default function Quiz() {
                           {/* Prezzo Fabbrica */}
                           <div className="flex items-center gap-2">
                             <span className="text-[10px] font-semibold uppercase text-gray-400 tracking-wider">Nostro prezzo di Fabbrica:</span>
-                            <span className="text-base font-extrabold text-emerald-600"> <span className='text-gray-300 tracking-tightest font-medium text-xs'> </span>€{mat.prezzoFabbricaMq}</span>
+                            <span className="flex items-baseline gap-0.5"><span className="text-[10px] font-medium text-gray-400 uppercase tracking-tight">da</span><span className="text-base font-extrabold text-emerald-600">€{mat.prezzoFabbricaMq}</span></span>
                             <span className="text-[10px] text-gray-300">/mq</span>
                             <span className="text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full ml-auto">{scontoLabel(mat)}</span>
                           </div>
@@ -1029,11 +1029,11 @@ export default function Quiz() {
                           <div className="flex items-center justify-between mb-1">
                             <div className="flex items-center gap-2">
                               <Package className="w-3.5 h-3.5 text-gray-400" />
-                              <span className="text-sm font-semibold text-gray-900">Smaltimento materiale</span>
+                              <span className="text-sm font-semibold text-gray-900">Smaltimento vecchi infissi</span>
                             </div>
                             <span className="text-sm font-bold text-emerald-700">{fmt(est.totaleSmaltimento)}</span>
                           </div>
-                          <p className="text-xs text-gray-400 ml-5.5">Costo fisso una tantum</p>
+                          <p className="text-xs text-gray-400 ml-5.5">Costo fisso per smaltire il vecchio</p>
                         </div>
                       </>
                     )}

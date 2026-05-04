@@ -1,3 +1,6 @@
+import CookieConsent from "./components/CookieConsent";
+import FiscalBonusBanner from "./components/FiscalBonusBanner";
+import InstallationTrustBanner from "./components/InstallationTrustBanner";
 import Hero from './components/Hero'
 import Navbar from './components/Navbar'
 import Quiz from './components/Quiz'
@@ -62,6 +65,14 @@ function App() {
         <TrustBanner />
         <FabbricaBanner />
         <QualityVideoBanner />
+
+        {/* Nuovo banner fiscale */}
+        <FiscalBonusBanner />
+
+        {/* Nuovo banner posa in opera */}
+        <InstallationTrustBanner />
+
+
         <ProductionVideo />
         <ProfileQuality />
         <WindowMaintenance />
@@ -70,6 +81,9 @@ function App() {
       </main>
       <Footer />
       <FloatingCTA />
+        {/* Cookie Consent Manager (Shows up after 10s) */}
+        <CookieConsent />
+
     </>
   )
 }

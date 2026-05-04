@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.ecosolutionsas.com/fabbricainfissi/sitemap.xml

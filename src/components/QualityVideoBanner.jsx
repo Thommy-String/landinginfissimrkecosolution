@@ -11,7 +11,7 @@ export default function QualityVideoBanner() {
             Ma la qualità è la stessa?{' '}
             <span className="bg-gradient-to-r from-sky-500 to-blue-600 bg-clip-text text-transparent">
               <br className="hidden sm:block" />
-              Sì. Ed è quella che i negozi comprano da noi e rivendono al doppio.
+              Sì, i negozi comprano da noi e rivendono.
             </span>
           </h2>
         </div>
@@ -31,7 +31,7 @@ export default function QualityVideoBanner() {
 
           {/* Badge — in alto a sinistra */}
           <div className="absolute top-4 left-4 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-black/40 backdrop-blur-sm border border-white/20">
-            <span className="text-xs font-semibold text-white whitespace-nowrap">Lavorazione reale — fabbrica MRK</span>
+            <span className="text-xs font-semibold text-white whitespace-nowrap">Taglio profilo — Fabbrica MRK-Ecosolution</span>
           </div>
 
           {/* 3 check in basso */}

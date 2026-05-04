@@ -30,7 +30,7 @@ export default function SocialProof() {
         <div className="relative rounded-2xl overflow-hidden bg-gray-900 shadow-xl">
 
           {/* Video sfondo — sempre visibile */}
-          <div className="relative aspect-[4/5] sm:aspect-[16/9] md:aspect-[2/1]">
+          <div className="relative aspect-[1/1] sm:aspect-[4/3] md:aspect-[16/9]">
             <video
               src={profiloVideo}
               autoPlay

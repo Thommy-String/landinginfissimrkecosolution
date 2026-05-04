@@ -6,6 +6,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
+    "dev:en": "node scripts/build-en.mjs --dev",
+    "build:en": "node scripts/build-en.mjs",
+    "dev:en-it-phone": "node scripts/build-en-it-phone.mjs --dev",
+    "build:en-it-phone": "node scripts/build-en-it-phone.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
