@@ -3,7 +3,11 @@ import logo from '../assets/images/logo/logoMRKEcoSolution-removebg-preview.png'
 import teamImg from '../assets/images/varie/MrkTeam.jpg'
 import azienda from '../datiAziendali'
 
-export default function Footer() {
+export default function Footer({ onConversion }) {
+  const fireConversion = (url) => {
+    const fn = onConversion ?? window.gtag_report_conversion
+    if (typeof fn === 'function') fn(url)
+  }
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
       <div className="max-w-5xl mx-auto px-6 py-16 sm:py-20">
@@ -59,7 +63,7 @@ export default function Footer() {
           {/* Chiamaci */}
           <a
             href={azienda.telefonoLink}
-            onClick={() => window.gtag_report_conversion && window.gtag_report_conversion(azienda.telefonoLink)}
+            onClick={() => fireConversion(azienda.telefonoLink)}
             className="flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl bg-gray-800/60 border border-gray-700/50 text-gray-200 hover:bg-sky-950/40 hover:border-sky-700/40 hover:text-sky-300 transition-all duration-300 group"
           >
             <Phone className="w-4 h-4 text-sky-400 group-hover:text-sky-300 transition-colors" />
@@ -69,7 +73,7 @@ export default function Footer() {
           {/* Email */}
           <a
             href={azienda.emailLink}
-            onClick={() => window.gtag_report_conversion && window.gtag_report_conversion(azienda.emailLink)}
+            onClick={() => fireConversion(azienda.emailLink)}
             className="flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl bg-gray-800/60 border border-gray-700/50 text-gray-200 hover:bg-amber-950/30 hover:border-amber-700/40 hover:text-amber-300 transition-all duration-300 group"
           >
             <Mail className="w-4 h-4 text-amber-400 group-hover:text-amber-300 transition-colors" />
@@ -81,7 +85,7 @@ export default function Footer() {
             href={azienda.whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={() => window.gtag_report_conversion && window.gtag_report_conversion(azienda.whatsappLink)}
+            onClick={() => fireConversion(azienda.whatsappLink)}
             className="flex items-center justify-center gap-2.5 px-5 py-3.5 rounded-xl bg-gray-800/60 border border-gray-700/50 text-gray-200 hover:bg-emerald-950/30 hover:border-emerald-700/40 hover:text-emerald-300 transition-all duration-300 group"
           >
             <MessageCircle className="w-4 h-4 text-emerald-400 group-hover:text-emerald-300 transition-colors" />

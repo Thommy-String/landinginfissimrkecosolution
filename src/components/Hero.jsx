@@ -45,7 +45,7 @@ export default function Hero() {
                 ))}
               </div>
               <span className="text-xs font-semibold text-gray-600 whitespace-nowrap">
-                Scelto da più di <span className="text-emerald-600 font-bold">316 famiglie e aziende</span>
+                <span className="text-emerald-600 font-bold">817 famiglie e aziende</span>
               </span>
             </div>
           </div>

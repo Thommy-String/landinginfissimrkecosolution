@@ -1,0 +1,13 @@
+Options -MultiViews
+RewriteEngine On
+RewriteBase /fabbricainfissi/
+
+# Lascia passare file e cartelle reali (assets, immagini, ecc.)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Tutto il resto → index.html (React Router gestisce le route)
+RewriteRule ^ index.html [QSA,L]
+
+# Fallback errore 404 → index.html
+ErrorDocument 404 /fabbricainfissi/index.html

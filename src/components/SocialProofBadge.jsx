@@ -1,13 +1,12 @@
 export default function SocialProofBadge() {
   const avatars = [
-'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces',
-'https://michelemariatammaro.it/wp-content/uploads/2019/07/Logo-MMT.jpg',
-'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&h=80&fit=crop&crop=faces',
-'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=faces',
-'https://www.shutterstock.com/image-vector/femida-goddess-law-logo-sale-600nw-2715417587.jpg',
-'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=80&h=80&fit=crop&crop=faces',
-'https://s3.amazonaws.com/thumbnails.venngage.com/template/6114cd0a-e706-4e1b-85b5-8aca4c480570.png',
-]
+    'https://i.pinimg.com/736x/d8/39/4b/d8394bd7f78be8bed8754eadc8bf650c.jpg',
+    'https://i.pinimg.com/1200x/53/24/25/532425760b453e6283cfef74ec335a0c.jpg',
+    'https://i.pinimg.com/736x/ef/e6/6a/efe66a9566171cbcd0563168f583e9dd.jpg',
+    'https://i.pinimg.com/736x/4d/45/3c/4d453ccacc80cef6799a08474ed7065d.jpg',
+    'https://i.pinimg.com/1200x/19/cb/8f/19cb8fae220b5d6b86e075f3e62e82f6.jpg',
+    'https://i.pinimg.com/736x/81/f4/ea/81f4ea155ab2ac3cd116929cd98cbdaa.jpg',
+  ]
 
 
 
@@ -36,7 +35,7 @@ export default function SocialProofBadge() {
           ))}
         </div>
         <span className="text-xs font-semibold text-gray-300 whitespace-nowrap">
-          Scelto da più di <span className="text-emerald-400 font-bold">316 famiglie e aziende</span>
+          Scelto da più di <span className="text-emerald-400 font-bold">817 famiglie e aziende</span>
         </span>
       </div>
     </div>

@@ -348,7 +348,7 @@ export default function Quiz() {
         
 
         {/* Titolo con chevron animato */}
-        <div className="text-center pt-48">
+        <div className="text-center pt-8">
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.065em] text-gray-900 leading-[1.2] mb-4">
             Quiz: {' '}
             <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">
@@ -1318,6 +1318,7 @@ export default function Quiz() {
                 <div className="text-center">
                   <a
                     href={azienda.telefonoLink}
+                    onClick={() => window.gtag_report_conversion_preventivo && window.gtag_report_conversion_preventivo()}
                     className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-emerald-500 to-teal-600 text-white rounded-lg font-semibold hover:shadow-lg hover:scale-105 transition-all duration-300"
                   >
                     <Phone className="w-4 h-4" />
