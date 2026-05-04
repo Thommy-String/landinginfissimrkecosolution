@@ -10,7 +10,16 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+dist-en
+dist-eng-numero-italiano
 *.local
+
+# File multimediali pesanti — usare storage esterno (Cloudflare R2, S3, ecc.)
+*.mp4
+*.mov
+*.avi
+*.avif
+src/assets/videos/
 
 # Editor directories and files
 .vscode/*
