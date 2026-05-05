@@ -43,6 +43,7 @@ export default function GeoLanding({
   zona,
   kmDistanza,
   imgFurgone,
+  conversionFn = null,   // ← opzionale: funzione di conversione Google Ads specifica per città
 }) {
   const zonaLabel = zona ?? `${citta} e provincia (${provincia})`
 

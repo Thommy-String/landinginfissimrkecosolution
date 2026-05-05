@@ -17,7 +17,7 @@ export default function PromoBannerGeo({ citta = 'Milano' }) {
     const key = `promo_dismissed_${citta}`
     if (sessionStorage.getItem(key)) return
 
-    const t = setTimeout(() => setVisible(true), 5000)
+    const t = setTimeout(() => setVisible(true), 10000)
     return () => clearTimeout(t)
   }, [citta])
 
