@@ -16,6 +16,10 @@ import GenericaPage      from './pages/GenericaPage'
 import PreventiviPage    from './pages/PreventiviPage'
 import PvcPage           from './pages/PvcPage'
 import DynamicCityLanding from './pages/DynamicCityLanding'
+import GeoMilano  from './pages/Geo/GeoMilano'
+import GeoMonza   from './pages/Geo/GeoMonza'
+import GeoComo    from './pages/Geo/GeoComo'
+import GeoVarese  from './pages/Geo/GeoVarese'
 
 function App() {
   return (
@@ -47,10 +51,10 @@ function App() {
           <Route path="posa-generica"    element={<DynamicCityLanding intento="posa" citta="generica" />} />
 
           {/* ── Gruppo 5: Geo-Pura ── */}
-          <Route path="geo-milano"       element={<DynamicCityLanding intento="geo" citta="milano"  />} />
-          <Route path="geo-monza"        element={<DynamicCityLanding intento="geo" citta="monza"   />} />
-          <Route path="geo-como"         element={<DynamicCityLanding intento="geo" citta="como"    />} />
-          <Route path="geo-varese"       element={<DynamicCityLanding intento="geo" citta="varese"  />} />
+          <Route path="geo-milano"       element={<GeoMilano />} />
+          <Route path="geo-monza"        element={<GeoMonza />} />
+          <Route path="geo-como"         element={<GeoComo />} />
+          <Route path="geo-varese"       element={<GeoVarese />} />
 
           {/* ── Catch-all ── */}
           <Route path="*" element={<GenericaPage />} />
