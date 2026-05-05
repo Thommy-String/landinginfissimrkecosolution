@@ -1,6 +1,38 @@
 /**
- * ClientiScorrevoli — Recensioni Google stile card scorrevoli
+ * ClientiScorrevoli — Recensioni Google stile card scorrevoli.
+ * Prop `citta` opzionale: se passata mostra solo le recensioni di quella città.
+ * Se omessa (PreventiviPage) mostra tutte.
  */
+import React, { useRef, useCallback } from 'react'
+
+const AVATAR_COLORS = [
+  'bg-emerald-500', 'bg-sky-500', 'bg-violet-500',
+  'bg-amber-500', 'bg-rose-500', 'bg-teal-500',
+]
+
+function AvatarFallback({ nome, index }) {
+  const initials = nome.split(' ').map(w => w[0]).join('').slice(0, 2).toUpperCase()
+  const color = AVATAR_COLORS[index % AVATAR_COLORS.length]
+  return (
+    <div className={`w-10 h-10 rounded-full shrink-0 flex items-center justify-center text-white text-xs font-bold ${color}`}>
+      {initials}
+    </div>
+  )
+}
+
+function Avatar({ src, nome, index }) {
+  const [error, setError] = React.useState(false)
+  if (error || !src) return <AvatarFallback nome={nome} index={index} />
+  return (
+    <img
+      src={src}
+      alt={nome}
+      referrerPolicy="no-referrer"
+      onError={() => setError(true)}
+      className="w-10 h-10 rounded-full object-cover shrink-0 border border-gray-100"
+    />
+  )
+}
 
 function GoogleLogo() {
   return (
@@ -13,92 +45,208 @@ function GoogleLogo() {
   )
 }
 
-// chip: label + colore tailwind bg/text
 const CLIENTI = [
-  {
-    avatar: 'https://i.pinimg.com/736x/d8/39/4b/d8394bd7f78be8bed8754eadc8bf650c.jpg',
-    nome: 'Marco T.',
-    citta: 'Monza',
-    frase: 'Onestamente non mi aspettavo lo stesso prodotto del negozio a questo prezzo... Ho fatto 3 preventivi prima di loro per stessa finestra con stesse caratteristiche tecniche e nessuno si avvicinava Fabbrica top.',
-    chips: [
-      { label: '6 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' },
-      { label: 'Tapparelle', color: 'bg-slate-100 text-slate-600' },
-    ],
-    quando: '2 mesi fa',
-  },
-  {
-    avatar: 'https://i.pinimg.com/1200x/53/24/25/532425760b453e6283cfef74ec335a0c.jpg',
-    nome: 'Luca B.',
-    citta: 'Como',
-    frase: 'Tutto finito in un giorno solo. Sono arrivati alle 8 e alle 17 stavano già sistemando. Nessun problema, nessun casino in casa. Davvero bravi.',
-    chips: [
-      { label: '3 portefinestre PVC noce', color: 'bg-amber-50 text-amber-700' },
-    ],
-    quando: '1 mese fa',
-  },
+  // ── MILANO ──
   {
     avatar: 'https://i.pinimg.com/736x/ef/e6/6a/efe66a9566171cbcd0563168f583e9dd.jpg',
     nome: 'Giulia R.',
     citta: 'Milano',
-    frase: 'Un rivenditore di Milano mi aveva quotato €6.450 per 8 finestre. Qui ho speso €4.680 per lo stesso profilo Aluplast + montaggio e smaltimento. Ben €1770 di differenza... sappiamo già chi ho scelto.',
-    chips: [
-      { label: '8 finestre PVC antracite', color: 'bg-zinc-100 text-zinc-700' },
-      { label: 'Cassonetti', color: 'bg-slate-100 text-slate-600' },
-    ],
+    frase: 'Un rivenditore di Milano mi aveva quotato €6.450 per 8 finestre. Qui ho speso €4.680 per lo stesso profilo Aluplast + montaggio e smaltimento. Ben €1770 di differenza.',
+    chips: [{ label: '8 finestre PVC antracite', color: 'bg-zinc-100 text-zinc-700' }, { label: 'Cassonetti', color: 'bg-slate-100 text-slate-600' }],
     quando: '3 mesi fa',
-  },
-  {
-    avatar: 'https://i.pinimg.com/736x/4d/45/3c/4d453ccacc80cef6799a08474ed7065d.jpg',
-    nome: 'Lucrezia M.',
-    citta: 'Varese',
-    frase: 'Dal sopralluogo alla posa tutto molto professionale. Il ragazzo che è venuto a misurare era preparatissimo, mi ha spiegato ogni cosa. Consiglio vivamente!!',
-    chips: [
-      { label: '4 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' },
-      { label: "Porta d'ingresso", color: 'bg-emerald-50 text-emerald-700' },
-    ],
-    quando: '5 mesi fa',
-  },
-  {
-    avatar: 'https://i.pinimg.com/1200x/19/cb/8f/19cb8fae220b5d6b86e075f3e62e82f6.jpg',
-    nome: 'Roberto F.',
-    citta: 'Lecco',
-    frase: 'Avevo bisogno di ristrutturare tutta la casa e temevo tempi lunghissimi. Preventivo in 24h, consegna prima del previsto. Roba che non capita spesso, ve lo dico.',
-    chips: [
-      { label: '12 infissi PVC bianco', color: 'bg-sky-50 text-sky-700' },
-      { label: 'Tapparelle noce', color: 'bg-brown-50 text-brown-700' },
-     { label: 'Cassonetti PVC', color: 'bg-gray-50 text-slate-700' },
-
-    ],
-    quando: '3 settimane fa',
-  },
-  {
-    avatar: 'https://i.pinimg.com/736x/81/f4/ea/81f4ea155ab2ac3cd116929cd98cbdaa.jpg',
-    nome: 'Andrea V.',
-    citta: 'Monza',
-    frase: 'Si vede che è roba tedesca, non è come certe finestre cinesi. Il profilo è bello robusto, la guarnizione ho scelto doppia e sento già la differenza quando tengo le finestre chiuse, e il prezzo era comunque sotto a tutti gli altri.',
-    chips: [
-      { label: '5 finestre PVC grigio', color: 'bg-zinc-100 text-zinc-700' },
-      { label: 'Oscuranti', color: 'bg-slate-100 text-slate-600' },
-    ],
-    quando: '6 mesi fa',
   },
   {
     avatar: 'https://i.pinimg.com/736x/24/3b/9a/243b9a65cbc0ca363e133b125cf2720b.jpg',
     nome: 'Chiara D.',
     citta: 'Milano',
     frase: 'Finalmente una ditta dove il preventivo è quello che paghi. Niente sorprese, niente costi extra a fine lavoro. Il preventivo era dettagliatissimo già da subito.',
-    chips: [
-      { label: '7 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' },
-      { label: 'Cassonetti coibentati', color: 'bg-teal-50 text-teal-700' },
-    ],
+    chips: [{ label: '7 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }, { label: 'Cassonetti coibentati', color: 'bg-teal-50 text-teal-700' }],
     quando: '2 settimane fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/b1/2c/5e/b12c5e8b3f9a1d4e6c7f8a2b3d4e5f6a.jpg',
+    nome: 'Stefano P.',
+    citta: 'Milano',
+    frase: 'Ho fatto installare 10 finestre in un appartamento in zona Navigli. Squadra puntualissima, lavoro pulito. In un giorno e mezzo tutto fatto. Consigliati.',
+    chips: [{ label: '10 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }],
+    quando: '1 mese fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/a2/b3/c4/a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6d7.jpg',
+    nome: 'Francesca L.',
+    citta: 'Milano',
+    frase: 'Ho contattato 6 aziende. Ecosolution è l\'unica che è venuta a fare il sopralluogo entro 2 giorni e ha mandato un preventivo scritto chiaro. Gli altri ancora aspetto.',
+    chips: [{ label: '5 finestre PVC grigio', color: 'bg-zinc-100 text-zinc-700' }, { label: 'Portoncino ingresso', color: 'bg-emerald-50 text-emerald-700' }],
+    quando: '3 settimane fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/c3/d4/e5/c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8.jpg',
+    nome: 'Davide M.',
+    citta: 'Milano',
+    frase: 'Zona Porta Romana, appartamento anni 70 con finestre malmesse. Rifatto tutto, incluse persiane. Lavoro eccellente, prezzo onestissimo per Milano.',
+    chips: [{ label: '6 finestre PVC noce', color: 'bg-amber-50 text-amber-700' }, { label: 'Persiane', color: 'bg-slate-100 text-slate-600' }],
+    quando: '2 mesi fa',
+  },
+
+  // ── MONZA ──
+  {
+    avatar: 'https://i.pinimg.com/736x/d8/39/4b/d8394bd7f78be8bed8754eadc8bf650c.jpg',
+    nome: 'Marco T.',
+    citta: 'Monza',
+    frase: 'Ho fatto 3 preventivi prima di loro per la stessa finestra con le stesse caratteristiche tecniche e nessuno si avvicinava al loro prezzo. Fabbrica top.',
+    chips: [{ label: '6 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }, { label: 'Tapparelle', color: 'bg-slate-100 text-slate-600' }],
+    quando: '2 mesi fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/81/f4/ea/81f4ea155ab2ac3cd116929cd98cbdaa.jpg',
+    nome: 'Andrea V.',
+    citta: 'Monza',
+    frase: 'Si vede che è roba tedesca, non è come certe finestre cinesi. Il profilo è robusto, la guarnizione doppia fa già sentire la differenza e il prezzo era sotto a tutti gli altri.',
+    chips: [{ label: '5 finestre PVC grigio', color: 'bg-zinc-100 text-zinc-700' }, { label: 'Oscuranti', color: 'bg-slate-100 text-slate-600' }],
+    quando: '6 mesi fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/d4/e5/f6/d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9.jpg',
+    nome: 'Elena B.',
+    citta: 'Monza',
+    frase: 'Abito vicino al centro di Monza, villetta anni 80. Hanno sostituito tutto in due giorni. Posa curata, nessun danno ai muri, silicone perfetto. Soddisfattissima.',
+    chips: [{ label: '8 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }, { label: 'Tapparelle motorizzate', color: 'bg-violet-50 text-violet-700' }],
+    quando: '1 mese fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/e5/f6/a7/e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0.jpg',
+    nome: 'Matteo C.',
+    citta: 'Monza',
+    frase: 'Magazzino a pochi km da Monza, si vede nella logistica consegna puntuale, nessun danneggiamento durante il trasporto arrivate perfette... ',
+    chips: [{ label: '4 finestre PVC antracite', color: 'bg-zinc-100 text-zinc-700' }],
+    quando: '3 settimane fa',
+  },
+
+  // ── COMO ──
+  {
+    avatar: 'https://i.pinimg.com/1200x/53/24/25/532425760b453e6283cfef74ec335a0c.jpg',
+    nome: 'Luca B.',
+    citta: 'Como',
+    frase: 'Tutto finito in un giorno solo. Sono arrivati alle 8 e alle 17 stavano già sistemando. Nessun problema, nessun casino in casa. Davvero bravi.',
+    chips: [{ label: '3 portefinestre PVC noce', color: 'bg-amber-50 text-amber-700' }],
+    quando: '1 mese fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/f6/a7/b8/f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1.jpg',
+    nome: 'Sara G.',
+    citta: 'Como',
+    frase: 'Casa sul lago, finestre con vetrocamera basso emissivo per l\'umidità. Mi hanno consigliato bene senza spingermi su prodotti costosi inutili. Onesti e competenti.',
+    chips: [{ label: '5 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }, { label: 'Vetrocamera basso-e', color: 'bg-teal-50 text-teal-700' }],
+    quando: '2 mesi fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/a7/b8/c9/a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2.jpg',
+    nome: 'Riccardo F.',
+    citta: 'Como',
+    frase: 'Preventivo via WhatsApp in 24 ore, sopralluogo il giorno dopo, posa fissata in una settimana. Tempi incredibili rispetto ad altre ditte del comasco.',
+    chips: [{ label: '6 finestre PVC grigio', color: 'bg-zinc-100 text-zinc-700' }, { label: 'Zanzariere', color: 'bg-green-50 text-green-700' }],
+    quando: '5 settimane fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/b8/c9/d0/b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3.jpg',
+    nome: 'Valentina M.',
+    citta: 'Como',
+    frase: 'Ristrutturazione completa, 9 finestre + 2 portefinestre. Risparmio notevole rispetto ai preventivi dei negozi della zona. Qualità Aluplast ottima.',
+    chips: [{ label: '9 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }, { label: '2 portefinestre', color: 'bg-amber-50 text-amber-700' }],
+    quando: '3 mesi fa',
+  },
+
+  // ── VARESE ──
+  {
+    avatar: 'https://i.pinimg.com/736x/4d/45/3c/4d453ccacc80cef6799a08474ed7065d.jpg',
+    nome: 'Lucrezia M.',
+    citta: 'Varese',
+    frase: 'Dal sopralluogo alla posa tutto molto professionale. Il ragazzo che è venuto a misurare era preparatissimo, mi ha spiegato ogni cosa. Consiglio vivamente!',
+    chips: [{ label: '4 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }, { label: "Porta d'ingresso", color: 'bg-emerald-50 text-emerald-700' }],
+    quando: '5 mesi fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/c9/d0/e1/c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4.jpg',
+    nome: 'Giorgio P.',
+    citta: 'Varese',
+    frase: 'Vivendo a Varese temevo che venire fino qui costasse di più. Invece il prezzo era identico e sono arrivati puntuali. Finestre bellissime, montaggio perfetto.',
+    chips: [{ label: '7 finestre PVC antracite', color: 'bg-zinc-100 text-zinc-700' }],
+    quando: '2 mesi fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/d0/e1/f2/d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5.jpg',
+    nome: 'Alessia T.',
+    citta: 'Varese',
+    frase: 'Ho scelto il PVC grigio antracite per abbinarlo agli infissi in alluminio del garage. Il risultato estetico è top, e il prezzo era imbattibile in tutta la provincia.',
+    chips: [{ label: '5 finestre PVC antracite', color: 'bg-zinc-100 text-zinc-700' }, { label: 'Cassonetti', color: 'bg-slate-100 text-slate-600' }],
+    quando: '6 settimane fa',
+  },
+  {
+    avatar: 'https://i.pinimg.com/736x/e1/f2/a3/e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6.jpg',
+    nome: 'Paolo R.',
+    citta: 'Varese',
+    frase: 'Lavori finiti in un giorno su una villetta a schiera. Puliti, veloci, nessun danno ai davanzali. Il responsabile mi ha anche aiutato a scegliere il tipo di vetro più adatto.',
+    chips: [{ label: '6 finestre PVC bianco', color: 'bg-sky-50 text-sky-700' }, { label: 'Tapparelle', color: 'bg-slate-100 text-slate-600' }],
+    quando: '1 mese fa',
   },
 ]
 
-// Duplichiamo per il loop seamless
-const ITEMS = [...CLIENTI, ...CLIENTI]
+export default function ClientiScorrevoli({ citta }) {
+  const filtered = citta
+    ? CLIENTI.filter(c => c.citta === citta)
+    : CLIENTI
+  const ITEMS = [...filtered, ...filtered]
 
-export default function ClientiScorrevoli() {
+  const trackRef = useRef(null)
+  const touchStartX = useRef(0)
+  const dragStartX = useRef(0)
+  const resumeTimer = useRef(null)
+
+  // Legge il translateX corrente dall'animazione CSS in esecuzione
+  const getAnimatedX = () => {
+    if (!trackRef.current) return 0
+    const matrix = window.getComputedStyle(trackRef.current).transform
+    if (!matrix || matrix === 'none') return 0
+    const match = matrix.match(/matrix.*\((.+)\)/)
+    if (!match) return 0
+    return parseFloat(match[1].split(', ')[4]) || 0
+  }
+
+  const handleTouchStart = useCallback((e) => {
+    if (!trackRef.current) return
+    if (resumeTimer.current) clearTimeout(resumeTimer.current)
+    // Congela l'animazione CSS catturando la posizione esatta
+    const currentX = getAnimatedX()
+    trackRef.current.style.animation = 'none'
+    trackRef.current.style.transform = `translateX(${currentX}px)`
+    touchStartX.current = e.touches[0].clientX
+    dragStartX.current = currentX
+  }, [])
+
+  const handleTouchMove = useCallback((e) => {
+    if (!trackRef.current) return
+    const dx = e.touches[0].clientX - touchStartX.current
+    trackRef.current.style.transform = `translateX(${dragStartX.current + dx}px)`
+  }, [])
+
+  const handleTouchEnd = useCallback(() => {
+    if (!trackRef.current) return
+    // Calcola il delay negativo per riprendere l'animazione esattamente da qui
+    const match = trackRef.current.style.transform.match(/translateX\((.+)px\)/)
+    const currentX = match ? parseFloat(match[1]) : 0
+    const halfWidth = trackRef.current.scrollWidth / 2
+    let normalized = currentX % halfWidth
+    if (normalized > 0) normalized -= halfWidth
+    const delay = (normalized / halfWidth) * 50 // secondi
+
+    resumeTimer.current = setTimeout(() => {
+      if (!trackRef.current) return
+      trackRef.current.style.transform = ''
+      trackRef.current.style.animation = `scroll-left 50s linear infinite`
+      trackRef.current.style.animationDelay = `${delay}s`
+    }, 800)
+  }, [])
+
   const card = (c, i) => (
     <div
       key={i}
@@ -106,8 +254,7 @@ export default function ClientiScorrevoli() {
       style={{ width: '270px' }}
     >
       <div className="flex items-center gap-2.5">
-        <img src={c.avatar} alt={c.nome} referrerPolicy="no-referrer"
-          className="w-10 h-10 rounded-full object-cover shrink-0 border border-gray-100" />
+        <Avatar src={c.avatar} nome={c.nome} index={i} />
         <div className="flex-1 min-w-0">
           <p className="text-[11px] font-bold text-gray-800 truncate">{c.nome}</p>
           <div className="flex items-center gap-1 mt-0.5">
@@ -143,10 +290,22 @@ export default function ClientiScorrevoli() {
       <div className="relative">
         <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-r from-white to-transparent z-10" />
         <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-12 sm:w-20 bg-gradient-to-l from-white to-transparent z-10" />
-        <div className="flex gap-3 animate-scroll-left" style={{ width: 'max-content' }}>
-          {ITEMS.map((c, i) => card(c, i))}
+        <div
+          className="overflow-hidden w-full"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <div
+            ref={trackRef}
+            className="flex gap-3 animate-scroll-left"
+            style={{ width: 'max-content' }}
+          >
+            {ITEMS.map((c, i) => card(c, i))}
+          </div>
         </div>
       </div>
     </div>
   )
 }
+

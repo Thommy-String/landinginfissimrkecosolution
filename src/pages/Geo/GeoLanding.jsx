@@ -24,19 +24,17 @@ import TabellaComparativa from '../../components/TabellaComparativa'
 import ConfrontoFabbricaVsShowroom from '../../components/ConfrontoFabbricaVsShowroom'
 import TreStepFacili from '../../components/TreStepFacili'
 import ClientiScorrevoli from '../../components/ClientiScorrevoli'
-import CoperturaCitta from '../../components/CoperturaCitta'
+
 import HeroGeoDinamica from '../../components/HeroGeoDinamica'
+import GalleryGeoHero from '../../components/GalleryGeoHero'
+import ScreenshotPreventivi from '../../components/ScreenshotPreventivi'
+import PromoBannerGeo from '../../components/PromoBannerGeo'
 import { CheckCircle, MapPin } from 'lucide-react'
 
-import screenshotPreventivo from '../../assets/images/screenshot preventivo mrk-eco.png'
-import screenshotTabella from '../../assets/images/Screenshot anteprima tabella preventivo.png'
-import screenshotPvc from '../../assets/images/screenshot preventivo pvc bianco.png'
-import screenshotPortafinestra from '../../assets/images/Screenshot portafinestra pvc bianco.png'
-
 const INCLUSO = [
-  'Prezzi di Fabbrica senza intermediari',
-  'Sopralluogo gratuito entro 48h',
-  'Garanzia 10 anni certificata',
+  'Prezzo dalla Fabbrica. Zero Intermediari.',
+  '100% Qualità Certificata Tedesca ',
+  'Consegna in 2-3 settimane',
 ]
 
 export default function GeoLanding({
@@ -71,69 +69,20 @@ export default function GeoLanding({
 
   return (
     <>
+      <PromoBannerGeo citta={citta} />
+
       {/* ── HERO ── */}
       <section className="bg-white pt-2 pb-0 sm:py-16">
         <div className="max-w-5xl mx-auto px-6 text-center">
 
-          {/* Galleria screenshot preventivi */}
-          <div
-            className="relative flex justify-center items-end mb-10 select-none"
-            style={{ height: 'clamp(220px, 55vw, 380px)' }}
-            onContextMenu={(e) => e.preventDefault()}
-          >
-            {/* Scheda dietro */}
-            <div
-              className="absolute z-0 rounded-xl overflow-hidden shadow-md border border-gray-200 origin-bottom opacity-90"
-              style={{
-                width: 'clamp(180px, 18vw, 150px)',
-                bottom: 'clamp(40px, 12vw, 80px)',
-                left: 'calc(30% + clamp(14px, 4vw, 28px))',
-                transform: 'rotate(12deg)',
-              }}
-            >
-              <img src={screenshotPortafinestra} alt="" draggable="false" className="w-full h-auto object-cover pointer-events-none" />
-            </div>
-
-            {/* Scheda sinistra */}
-            <div
-              className="absolute bottom-0 z-[1] rounded-xl overflow-hidden shadow-lg border border-gray-200 origin-bottom"
-              style={{
-                width: 'clamp(180px, 26vw, 200px)',
-                left: 'clamp(0px, 2vw, 40px)',
-                transform: 'rotate(-6deg)',
-              }}
-            >
-              <img src={screenshotTabella} alt="" draggable="false" className="w-full h-auto object-cover pointer-events-none" />
-            </div>
-
-            {/* Scheda centrale */}
-            <div className="relative z-10 flex flex-col items-center">
-              <div
-                className="rounded-2xl overflow-hidden shadow-2xl border-2 border-emerald-400"
-                style={{ width: 'clamp(200px, 35vw, 240px)' }}
-              >
-                <img src={screenshotPreventivo} alt="" draggable="false" className="w-full h-auto object-cover pointer-events-none" />
-              </div>
-            </div>
-
-            {/* Scheda destra */}
-            <div
-              className="absolute bottom-0 z-[1] rounded-xl overflow-hidden shadow-lg border border-gray-200 origin-bottom"
-              style={{
-                width: 'clamp(130px, 26vw, 200px)',
-                right: 'clamp(0px, 2vw, 40px)',
-                transform: 'rotate(8deg)',
-              }}
-            >
-              <img src={screenshotPvc} alt="" draggable="false" className="w-full h-auto object-cover pointer-events-none" />
-            </div>
-          </div>
+          {/* Galleria geo: furgone locale + screenshot preventivi */}
+          <GalleryGeoHero citta={citta} provincia={provincia} imgFurgone={imgFurgone} />
 
           {/*h1 eyebrow badge */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-5">
             <MapPin className="w-3.5 h-3.5 text-emerald-600" />
             <span className="text-xs font-semibold text-emerald-700 tracking-tight">
-              Siamo una Fabbrica di serramenti su misura - vendita diretta
+              Fabbrica di serramenti - vendita diretta
             </span>
           </div>
 
@@ -173,14 +122,16 @@ export default function GeoLanding({
         </div>
       </section>
 
-      {/* ── RECENSIONI CLIENTI ── */}
-      <ClientiScorrevoli />
+      {/* ── RECENSIONI CLIENTI ── solo per questa città */}
+      <ClientiScorrevoli citta={citta} />
 
       {/* ── HERO GEO DINAMICA (furgone/squadra + badge operatività) ── */}
       <HeroGeoDinamica citta={citta} provincia={provincia} imgSrc={imgFurgone} />
 
-      {/* ── COPERTURA LOCALE ── */}
-      <CoperturaCitta citta={citta} provincia={provincia} zona={zonaLabel} kmDistanza={kmDistanza} />
+
+
+      {/* ── SCREENSHOT PREVENTIVI ── */}
+      <ScreenshotPreventivi />
 
       {/* ── QUIZ PREVENTIVO ── */}
       <div id="preventivo"><Quiz /></div>

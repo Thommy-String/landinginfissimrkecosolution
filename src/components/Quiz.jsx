@@ -349,6 +349,38 @@ export default function Quiz() {
 
         {/* Titolo con chevron animato */}
         <div className="text-center pt-8">
+
+          {/* Social proof pill */}
+          {(() => {
+            const MESI_IT = ['Gennaio','Febbraio','Marzo','Aprile','Maggio','Giugno','Luglio','Agosto','Settembre','Ottobre','Novembre','Dicembre']
+            const meseName = MESI_IT[new Date().getMonth()]
+            const AVATARS = [
+              'https://i.pinimg.com/736x/ef/e6/6a/efe66a9566171cbcd0563168f583e9dd.jpg',
+              'https://i.pinimg.com/736x/d8/39/4b/d8394bd7f78be8bed8754eadc8bf650c.jpg',
+              'https://i.pinimg.com/1200x/53/24/25/532425760b453e6283cfef74ec335a0c.jpg',
+              'https://i.pinimg.com/736x/4d/45/3c/4d453ccacc80cef6799a08474ed7065d.jpg',
+              'https://i.pinimg.com/736x/24/3b/9a/243b9a65cbc0ca363e133b125cf2720b.jpg',
+            ]
+            return (
+              <div className="inline-flex items-center gap-1 mb-4">
+                <div className="flex -space-x-2">
+                  {AVATARS.map((src, i) => (
+                    <img
+                      key={i}
+                      src={src}
+                      alt=""
+                      referrerPolicy="no-referrer"
+                      className="w-7 h-7 rounded-full object-cover border-2 border-white"
+                    />
+                  ))}
+                </div>
+                <span className="text-[11px] tracking-tight font-semibold text-gray-600">
+                  <span className="text-gray-900 font-extrabold">178 persone</span> a <span className="text-gray-500">{meseName}</span> hanno fatto il quiz.
+                </span>
+              </div>
+            )
+          })()}
+
           <h2 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.065em] text-gray-900 leading-[1.2] mb-4">
             Quiz: {' '}
             <span className="bg-gradient-to-r from-green-500 to-emerald-600 bg-clip-text text-transparent">

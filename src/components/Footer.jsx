@@ -1,6 +1,7 @@
 import { Phone, Mail, MessageCircle, ArrowRight } from 'lucide-react'
 import logo from '../assets/images/logo/logoMRKEcoSolution-removebg-preview.png'
 import teamImg from '../assets/images/varie/MrkTeam.jpg'
+import furgoneSpotted from '../assets/images/geo-furgoni-img/furgone spotted mrkecosolution.jpeg'
 import azienda from '../datiAziendali'
 
 export default function Footer({ onConversion }) {
@@ -29,6 +30,12 @@ export default function Footer({ onConversion }) {
               src={teamImg} 
               alt="Team MRK Eco Solution" 
               className="mt-8 rounded-lg shadow-md w-full max-w-sm h-auto object-cover"
+            />
+            <img
+              src={furgoneSpotted}
+              alt="Furgone MRK Eco Solution in città"
+              className="mt-3 rounded-lg shadow-md w-full max-w-sm object-cover"
+              style={{ height: '260px' }}
             />
           </div>
 

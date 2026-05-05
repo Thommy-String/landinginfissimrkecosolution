@@ -15,3 +15,12 @@
 .animate-scroll-left:hover {
   animation-play-state: paused;
 }
+
+/* Nascondi scrollbar nativa ma mantieni scroll funzionante */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
