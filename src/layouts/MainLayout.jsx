@@ -6,7 +6,11 @@ import CookieConsent from '../components/CookieConsent'
 
 // Mappa route → funzione di conversione specifica
 const CONVERSION_MAP = {
-  '/preventivi': () => window.gtag_report_conversion_preventivo?.(),
+  '/preventivi':   () => window.gtag_report_conversion_preventivo?.(),
+  '/geo-monza':    () => window.gtag_report_conversion_preventivo?.(),
+  '/geo-milano':   () => window.gtag_report_conversion_preventivo?.(),
+  '/geo-como':     () => window.gtag_report_conversion_preventivo?.(),
+  '/geo-varese':   () => window.gtag_report_conversion_preventivo?.(),
   // aggiungi qui altre landing: '/infissi-pvc': () => window.gtag_report_conversion_pvc?.(),
 }
 
