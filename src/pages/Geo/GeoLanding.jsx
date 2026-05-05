@@ -25,6 +25,7 @@ import ConfrontoFabbricaVsShowroom from '../../components/ConfrontoFabbricaVsSho
 import TreStepFacili from '../../components/TreStepFacili'
 import ClientiScorrevoli from '../../components/ClientiScorrevoli'
 import CoperturaCitta from '../../components/CoperturaCitta'
+import HeroGeoDinamica from '../../components/HeroGeoDinamica'
 import { CheckCircle, MapPin } from 'lucide-react'
 
 import screenshotPreventivo from '../../assets/images/screenshot preventivo mrk-eco.png'
@@ -57,7 +58,15 @@ export default function GeoLanding({
     }
   }, [])
 
-  const DEFAULT_TITLE = `Infissi a ${citta}: Prezzi Diretti dalla Fabbrica, Installazione Inclusa.`
+  const DEFAULT_TITLE_JSX = (
+    <>
+     
+      <span className="bg-gradient-to-r from-blue-500 to-emerald-500 bg-clip-text text-transparent">
+       I tuoi nuovi Infissi a{' '} {citta}
+      </span>
+      : Prezzi Diretti dalla Fabbrica, Installazione Inclusa.
+    </>
+  )
 
   return (
     <>
@@ -119,16 +128,16 @@ export default function GeoLanding({
             </div>
           </div>
 
-          {/* Geo badge */}
+          {/*h1 eyebrow badge */}
           <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 mb-5">
             <MapPin className="w-3.5 h-3.5 text-emerald-600" />
             <span className="text-xs font-semibold text-emerald-700 tracking-tight">
-              Installiamo a {citta} ({provincia}) — Fabbrica a Lentate sul Seveso (MB)
+              Siamo una Fabbrica di serramenti su misura - vendita diretta
             </span>
           </div>
 
           <h1 className="text-2xl sm:text-4xl md:text-5xl font-bold tracking-[-0.065em] leading-[1.2] mb-6 text-gray-900">
-            {keywordTitle ?? DEFAULT_TITLE}
+            {keywordTitle ?? DEFAULT_TITLE_JSX}
           </h1>
 
           <section className="bg-white pb-2">
@@ -165,6 +174,9 @@ export default function GeoLanding({
 
       {/* ── RECENSIONI CLIENTI ── */}
       <ClientiScorrevoli />
+
+      {/* ── HERO GEO DINAMICA (furgone/squadra + badge operatività) ── */}
+      <HeroGeoDinamica citta={citta} provincia={provincia} />
 
       {/* ── COPERTURA LOCALE ── */}
       <CoperturaCitta citta={citta} provincia={provincia} zona={zonaLabel} kmDistanza={kmDistanza} />
