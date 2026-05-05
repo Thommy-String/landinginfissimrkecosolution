@@ -44,6 +44,7 @@ export default function GeoLanding({
   provincia = 'MI',
   zona,
   kmDistanza,
+  imgFurgone,
 }) {
   const zonaLabel = zona ?? `${citta} e provincia (${provincia})`
 
@@ -176,7 +177,7 @@ export default function GeoLanding({
       <ClientiScorrevoli />
 
       {/* ── HERO GEO DINAMICA (furgone/squadra + badge operatività) ── */}
-      <HeroGeoDinamica citta={citta} provincia={provincia} />
+      <HeroGeoDinamica citta={citta} provincia={provincia} imgSrc={imgFurgone} />
 
       {/* ── COPERTURA LOCALE ── */}
       <CoperturaCitta citta={citta} provincia={provincia} zona={zonaLabel} kmDistanza={kmDistanza} />
